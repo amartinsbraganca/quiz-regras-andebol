@@ -187,16 +187,3 @@ input.wrong + label,
 label.wrong {
   background-color: #fecaca !important; /* vermelho */
 }
-
-@media (max-width: 768px) {
-  body {
-    min-height: 100vh;   /* garante altura mínima da tela */
-    background-size: cover; /* garante que o gradiente cubra toda a tela */
-  }
-
-  /* Ocultar logos específicos */
-  .logo_fap,
-  .logo_efaa {
-    display: none;
-  }
-}
