@@ -2771,10 +2771,29 @@ document.addEventListener('DOMContentLoaded', function () {
   const progressText = document.getElementById('progress');
   const progressBar = document.getElementById('progressBar');
   const scoreEl = document.getElementById('score');
+  const percentEl = document.getElementById('percentAcertos');
   const correctSound = document.getElementById('correctSound');
   const wrongSound = document.getElementById('wrongSound');
+  const logoFap = document.querySelector('.logo_fap');
+  const logoEfaa = document.querySelector('.logo_efaa');
 
   window.perguntasOriginais = [...perguntas];
+
+  function atualizarScore() {
+    const totalRespondidas = resultados.length;
+    if (scoreEl) scoreEl.textContent = `Acertos: ${acertos} de ${totalRespondidas}`;
+    if (percentEl) {
+      const percentAcertos = totalRespondidas > 0 
+        ? Math.round((acertos / totalRespondidas) * 100)
+        : 0;
+      percentEl.textContent = `Percentual de acerto: ${percentAcertos}%`;
+    }
+  }
+
+  function ocultarLogos() {
+    if (logoFap) logoFap.style.display = 'none';
+    if (logoEfaa) logoEfaa.style.display = 'none';
+  }
 
   if (startBtn) {
     startBtn.addEventListener('click', function () {
@@ -2800,6 +2819,7 @@ document.addEventListener('DOMContentLoaded', function () {
       resultados = [];
       modeSelection.style.display = 'none';
       appContainer.style.display = 'block';
+      ocultarLogos();
       renderPergunta();
     });
   }
@@ -2812,6 +2832,7 @@ document.addEventListener('DOMContentLoaded', function () {
       resultados = [];
       modeSelection.style.display = 'none';
       appContainer.style.display = 'block';
+      ocultarLogos();
       renderPergunta();
     });
   }
@@ -2837,24 +2858,21 @@ document.addEventListener('DOMContentLoaded', function () {
       <div id="feedback" class="mt-2"></div>
     `;
 
-    // Atualiza progresso
-    progressText.textContent = `Progresso: ${indiceAtual + 1}/${perguntas.length}`;
-    progressBar.style.width = `${((indiceAtual + 1) / perguntas.length) * 100}%`;
+    if (progressText) progressText.textContent = `Progresso: ${indiceAtual + 1}/${perguntas.length}`;
+    if (progressBar) progressBar.style.width = `${((indiceAtual + 1)/perguntas.length)*100}%`;
 
-    // Botões
     if (prevBtn) prevBtn.disabled = indiceAtual === 0;
     if (nextBtn) nextBtn.disabled = false;
 
-    // Score
-    if (scoreEl) scoreEl.textContent = `Acertos: ${acertos}`;
-
-    // Reset highlights
     podeAvancar = false;
+
     const inputs = document.querySelectorAll('input[name="resposta"]');
     inputs.forEach(input => {
       input.disabled = false;
       input.parentElement.style.backgroundColor = "";
     });
+
+    atualizarScore();
   }
 
   function arraysIguais(a, b) {
@@ -2881,31 +2899,23 @@ document.addEventListener('DOMContentLoaded', function () {
       const corretaResposta = arraysIguais(corretaArr, selecionados);
       if (corretaResposta) {
         acertos++;
-        if (feedback) {
-          feedback.textContent = "Correto!";
-          feedback.style.color = "green";
-        }
+        if (feedback) { feedback.textContent = "Correto!"; feedback.style.color = "green"; }
         if (correctSound) correctSound.play();
       } else {
-        if (feedback) {
-          feedback.textContent = "Incorreto!";
-          feedback.style.color = "red";
-        }
+        if (feedback) { feedback.textContent = "Incorreto!"; feedback.style.color = "red"; }
         if (wrongSound) wrongSound.play();
       }
 
-      // Destacar respostas
       inputs.forEach(input => {
         const label = input.parentElement;
         const idx = Number(input.value);
-        if (corretaArr.includes(idx)) label.style.backgroundColor = "#a7f3d0"; // verde
-        if (selecionados.includes(idx) && !corretaArr.includes(idx)) label.style.backgroundColor = "#fecaca"; // vermelho
+        if (corretaArr.includes(idx)) label.style.backgroundColor = "#a7f3d0";
+        if (selecionados.includes(idx) && !corretaArr.includes(idx)) label.style.backgroundColor = "#fecaca";
         input.disabled = true;
       });
 
       resultados[indiceAtual] = corretaResposta;
-      if (scoreEl) scoreEl.textContent = `Acertos: ${acertos}`;
-
+      atualizarScore();
       podeAvancar = true;
     } else {
       podeAvancar = false;
@@ -2921,14 +2931,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      if (indiceAtual > 0) {
-        indiceAtual--;
-        renderPergunta();
-      }
-    });
-  }
+  if (prevBtn) prevBtn.addEventListener('click', () => {
+    if (indiceAtual > 0) {
+      indiceAtual--;
+      renderPergunta();
+    }
+  });
 
   if (nextBtn) nextBtn.addEventListener('click', proximaPergunta);
 

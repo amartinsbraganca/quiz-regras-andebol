@@ -21,7 +21,7 @@
     <h1 class="text-3xl font-extrabold text-blue-800 dark:text-blue-200 mb-2 text-center">Quiz de Regras de Andebol</h1>
     <p class="text-gray-600 dark:text-gray-300 mb-8 text-center">Testa os teus conhecimentos sobre as regras do Andebol.<br>Escolhe o modo e diverte-te!</p>
     <button id="startQuizBtn" class="bg-blue-600 hover:bg-blue-700 transition text-white px-8 py-4 rounded-xl text-xl font-bold shadow-lg mb-2 w-full">Começar</button>
-    <span class="text-xs text-gray-400 mt-2">Desenvolvido por árbitros para árbitros.</span>
+    <span class="text-xs text-gray-400 mt-2">Desenvolvido por árbitros para árbitros. Ainda em modo experimental. Enviem-nos inputs e feedback para melhorar.</span>
   </div>
 </div>
 
@@ -71,14 +71,14 @@
   </div>
 
   <footer class="footer flex justify-between items-center p-4">
-    <button id="prevBtn" disabled class="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-200 px-4 py-2 rounded">Anterior</button>
     <button id="nextBtn" disabled class="bg-blue-600 text-white px-4 py-2 rounded">Próxima</button>
   </footer>
 
   <div class="score-container p-4">
-    <p id="score">Acertos: 0</p>
-    <button id="exportBtn" class="bg-green-600 text-white px-4 py-2 rounded ml-2">Exportar Resultados</button>
-  </div>
+    <p id="score">Acertos: 0 de 0</p>
+  <div id="percentAcertos" style="font-weight:bold; margin-top:4px;">Percentual de acerto: 0%</div>
+  <button id="exportBtn" class="bg-green-600 text-white px-4 py-2 rounded ml-2">Exportar Resultados</button>
+</div>
 </div>
 
 <audio id="correctSound" src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg"></audio>
