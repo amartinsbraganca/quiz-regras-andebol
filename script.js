@@ -12,10 +12,10 @@ let perguntas = [
   },
   {
     "pergunta": "Quais são as medidas interiores da baliza?",
-    "opcoes": ["a) 40 x 20 metros",
-"b) 42 x 20 metros",
-"c) 38 x 18 metros",
-"d) Comprimento entre 38 e 42 metros e a largura entre 18 e 22 metros."],
+    "opcoes": ["a) 1,92 x 2,92 metros",
+"b) 2,00 x 3,00 metros",
+"c) 2,05 x 3,05 metros",
+"d) 2,08 x 3,08 metros"],
     "correta": 1
 
   },

@@ -7,33 +7,31 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="<body class="h-screen w-screen m-0 p-0 transition-colors>
+<body class="h-screen w-screen m-0 p-0 transition-colors flex items-center justify-center">
 
-</body>"">
-
-<!-- Logos SEMPRE visíveis e com o dobro do tamanho -->
-<div class="fixed-logos z-50 fixed left-8 bottom-8 flex flex-col gap-4 pointer-events-none select-none">
+<!-- Logos fixas (atrás do conteúdo) -->
+<div id="logos" class="fixed-logos flex flex-col gap-4 pointer-events-none select-none">
   <img src="logo_fap.png" alt="Federação Andebol Portugal" class="w-40 h-24 object-contain bg-white rounded shadow" />
   <img src="logo_efaa.png" alt="Escola de Formação de Árbitros de Andebol" class="w-40 h-24 object-contain bg-white rounded shadow" />
 </div>
 
-<!-- Página inicial moderna ocupa todo o separador -->
-<div id="startPage" class="flex items-center justify-center h-screen w-screen bg-transparent fixed top-0 left-0 z-40">
-  <div class="bg-white dark:bg-gray-900 shadow-2xl rounded-2xl p-10 flex flex-col items-center w-full max-w-xl border border-blue-200 dark:border-gray-700">
+<!-- Página inicial -->
+<div id="startPage" class="flex items-center justify-center w-full max-w-xl bg-transparent z-50">
+  <div class="bg-white dark:bg-gray-900 shadow-2xl rounded-2xl p-10 flex flex-col items-center w-full border border-blue-200 dark:border-gray-700">
     <h1 class="text-3xl font-extrabold text-blue-800 dark:text-blue-200 mb-2 text-center">Quiz de Regras de Andebol</h1>
     <p class="text-gray-600 dark:text-gray-300 mb-8 text-center">Testa os teus conhecimentos sobre as regras do Andebol.<br>Escolhe o modo e diverte-te!</p>
     <button id="startQuizBtn" class="bg-blue-600 hover:bg-blue-700 transition text-white px-8 py-4 rounded-xl text-xl font-bold shadow-lg mb-2 w-full">Começar</button>
-    <span class="text-xs text-gray-400 mt-2">Desenvolvido por AB. De árbitros para árbitros.</span>
+    <span class="text-xs text-gray-400 mt-2">Desenvolvido por árbitros para árbitros.</span>
   </div>
 </div>
 
-<!-- Copyright fixo no canto inferior direito -->
+<!-- Copyright fixo -->
 <div class="copyright-text">
   © Copyright 2025, Alexandre Bragança
 </div>
 
 <!-- Seleção de modo -->
-<div id="modeSelection" class="flex flex-col items-center justify-center h-screen w-screen bg-white dark:bg-gray-900 fixed top-0 left-0 z-30" style="display:none;">
+<div id="modeSelection" class="flex flex-col items-center justify-center w-full max-w-xl bg-white dark:bg-gray-900 z-50" style="display:none;">
   <h2 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Escolha o modo do quiz</h2>
   <button id="randomModeBtn" class="bg-green-600 text-white px-6 py-3 rounded-lg text-lg font-semibold shadow mb-4">Perguntas Aleatórias</button>
   <div id="randomOptions" style="display:none;" class="mb-4">
@@ -49,23 +47,22 @@
   <button id="orderedModeBtn" class="bg-yellow-600 text-white px-6 py-3 rounded-lg text-lg font-semibold shadow">Perguntas por Ordem</button>
 </div>
 
-<div class="app-container" id="appContainer" style="display:none">
-  <header class="header flex justify-between items-center p-4 bg-white dark:bg-gray-900 border-b border-blue-200 dark:border-gray-700">
+<!-- Container do quiz -->
+<div class="app-container" id="appContainer" style="display:none;">
+  <header class="header flex justify-between items-center p-4 border-b border-blue-200 dark:border-gray-700">
     <h1 class="text-xl font-bold text-blue-800 dark:text-blue-200">Quiz Interativo</h1>
     <div class="header-actions">
       <button id="toggleDarkMode" class="text-2xl" title="Alternar modo escuro">🌙</button>
     </div>
   </header>
 
-  <div class="copyright-text">
-  © Copyright 2025, Alexandre Bragança
-</div>
-
   <div class="progress-container p-4">
     <p id="progress">Progresso: 0/0</p>
   </div>
 
-  <div class="progress-bar h-2 bg-blue-100 dark:bg-gray-700 mx-4 rounded"><div id="progressBar" class="h-2 bg-blue-600 rounded" style="width:0%"></div></div>
+  <div class="progress-bar h-2 bg-blue-100 dark:bg-gray-700 mx-4 rounded">
+    <div id="progressBar" class="h-2 bg-blue-600 rounded" style="width:0%"></div>
+  </div>
 
   <div id="timer" class="timer hidden p-4">Tempo: 15s</div>
 
