@@ -153,18 +153,16 @@ body {
 }
 
 /* =========================
-   Logos abaixo do quiz
+   Logos Fixas
 ========================= */
 .fixed-logos {
-  position: relative;      /* não fixa mais na tela */
-  bottom: 0;
-  left: 0;
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
   display: flex;
-  flex-direction: row;     /* horizontal */
-  justify-content: center; /* centralizado */
+  flex-direction: column;
   gap: 10px;
-  margin-top: 20px;        /* espaço acima do quiz */
-  z-index: 1;
+  z-index: 50;
 }
 
 .logo-img {
@@ -175,24 +173,6 @@ body {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   padding: 4px;
-  transition: all 0.3s ease;
-}
-
-/* Logos Responsivos */
-@media (max-width: 768px) {
-  .logo-img {
-    width: 80px;
-    height: 40px;
-    padding: 2px;
-  }
-}
-
-@media (max-width: 480px) {
-  .logo-img {
-    width: 60px;
-    height: 30px;
-    padding: 1px;
-  }
 }
 
 /* =========================
@@ -206,4 +186,12 @@ label.correct {
 input.wrong + label,
 label.wrong {
   background-color: #fecaca !important; /* vermelho */
+}
+
+/* Ocultar logos específicos em telas pequenas (mobile) */
+@media (max-width: 768px) {
+  .logo_fap,
+  .logo_efaa {
+    display: none;
+  }
 }
