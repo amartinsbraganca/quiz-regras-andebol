@@ -2947,38 +2947,110 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (exportBtn) {
-    exportBtn.addEventListener('click', () => {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
+  exportBtn.addEventListener('click', () => {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: "mm", format: "a4" });
 
-      doc.setFontSize(16);
-      doc.text("Resultados do Quiz", 10, 15);
-      doc.setFontSize(12);
-      doc.text(`Acertos: ${acertos} de ${perguntas.length}`, 10, 25);
+    const margin = 15;
+    const maxWidth = 210 - 2 * margin;
+    let y = margin;
 
-      let y = 35;
-      perguntas.forEach((p, i) => {
-        doc.setFont(undefined, 'bold');
-        doc.text(`${i + 1}. ${p.pergunta}`, 10, y);
-        y += 7;
+    const totalPerguntas = perguntas.length;
+    const percentAcerto = totalPerguntas > 0 ? Math.round((acertos / totalPerguntas) * 100) : 0;
 
-        doc.setFont(undefined, 'normal');
-        p.opcoes.forEach((op, idx) => {
-          let prefix = "";
-          if (Array.isArray(p.correta) && p.correta.includes(idx)) prefix = "(Correta) ";
-          else if (p.correta === idx) prefix = "(Correta) ";
-          doc.text(`   ${String.fromCharCode(97 + idx)}) ${op} ${prefix}`, 12, y);
-          y += 6;
-        });
+    const lineHeight = 6; // altura de cada linha
 
-        let userResp = resultados[i] !== undefined ? resultados[i] : false;
-        doc.text(`   Resultado: ${userResp ? "✔️ Correto" : "❌ Incorreto"}`, 12, y);
-        y += 10;
+    // --- Cabeçalho ---
+    doc.setFontSize(20);
+    doc.setFont(undefined, 'bold');
+    doc.setTextColor(30, 30, 60);
+    doc.text("Resultados do Quiz", margin, y);
+    y += lineHeight * 2;
 
-        if (y > 270) { doc.addPage(); y = 15; }
+    doc.setFontSize(12);
+    doc.setFont(undefined, 'normal');
+    doc.setTextColor(50);
+    doc.text(`Perguntas respondidas: ${resultados.length} / ${totalPerguntas}`, margin, y);
+    y += lineHeight;
+    doc.text(`Acertos: ${acertos}`, margin, y);
+    y += lineHeight;
+    doc.text(`Percentual de acerto: ${percentAcerto}%`, margin, y);
+    y += lineHeight * 2;
+
+    // Linha divisória
+    doc.setDrawColor(100, 100, 150);
+    doc.setLineWidth(0.7);
+    doc.line(margin, y, 210 - margin, y);
+    y += lineHeight;
+
+    // --- Perguntas ---
+    perguntas.forEach((p, i) => {
+      const blocoPadding = 4;
+      const blocoWidth = maxWidth;
+      const blocoColor = i % 2 === 0 ? [245, 245, 245] : [220, 235, 245];
+
+      // Quebra de texto da pergunta
+      const perguntaLinhas = doc.splitTextToSize(`${i + 1}. ${p.pergunta}`, blocoWidth - 2 * blocoPadding);
+
+      // Quebra de texto das opções
+      const opLinhasArray = p.opcoes.map((op, idx) => {
+        const isCorreta = Array.isArray(p.correta) ? p.correta.includes(idx) : p.correta === idx;
+        const textoOpcao = `${String.fromCharCode(97 + idx)}) ${op}`;
+        return { linhas: doc.splitTextToSize(textoOpcao, blocoWidth - 2 * blocoPadding), isCorreta };
       });
 
-      doc.save("resultados_quiz.pdf");
+      // Calcular altura total do bloco
+      let blocoAltura = perguntaLinhas.length * lineHeight + lineHeight; // pergunta + espaçamento
+      opLinhasArray.forEach(opItem => blocoAltura += opItem.linhas.length * lineHeight);
+      blocoAltura += lineHeight; // resultado final
+      blocoAltura += 2 * blocoPadding; // padding
+
+      // Quebra de página automática se necessário
+      if (y + blocoAltura > 297 - margin) {
+        doc.addPage();
+        y = margin;
+      }
+
+      // Fundo do bloco
+      doc.setFillColor(...blocoColor);
+      doc.roundedRect(margin, y - blocoPadding, blocoWidth, blocoAltura, 3, 3, 'F');
+
+      // Borda azul escuro
+      doc.setDrawColor(30, 60, 120);
+      doc.setLineWidth(0.7);
+      doc.roundedRect(margin, y - blocoPadding, blocoWidth, blocoAltura, 3, 3, 'S');
+
+      // Pergunta
+      doc.setFont(undefined, 'bold');
+      doc.setTextColor(30, 60, 120);
+      perguntaLinhas.forEach(line => {
+        doc.text(line, margin + blocoPadding, y);
+        y += lineHeight;
+      });
+      y += 2; // pequeno espaço antes das opções
+
+      // Opções
+      doc.setFont(undefined, 'normal');
+      opLinhasArray.forEach(opItem => {
+        doc.setTextColor(opItem.isCorreta ? "green" : 50);
+        opItem.linhas.forEach(line => {
+          doc.text(line, margin + blocoPadding, y);
+          y += lineHeight;
+        });
+      });
+
+      y += 2; // pequeno espaço antes do resultado
+
+      // Resultado final
+      const userResp = resultados[i] !== undefined ? resultados[i] : false;
+      doc.setFont(undefined, 'bold');
+      doc.setTextColor(userResp ? "green" : "red");
+      doc.text(userResp ? "Correto" : "Incorreto", margin + blocoPadding, y);
+      y += lineHeight + blocoPadding;
     });
-  }
-});
+
+    doc.save("resultados_quiz_profissional_final.pdf");
+  });
+}
+
+  });
