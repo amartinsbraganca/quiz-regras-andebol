@@ -2760,11 +2760,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const appContainer = document.getElementById('appContainer');
   const randomModeBtn = document.getElementById('randomModeBtn');
   const orderedModeBtn = document.getElementById('orderedModeBtn');
+  const videoTestBtn = document.getElementById('videoTestBtn');
   const randomOptions = document.getElementById('randomOptions');
   const startRandomQuiz = document.getElementById('startRandomQuiz');
   const numQuestions = document.getElementById('numQuestions');
   const quizContainer = document.getElementById('quizContainer');
-  const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   const toggleDarkMode = document.getElementById('toggleDarkMode');
   const exportBtn = document.getElementById('exportBtn');
@@ -2774,8 +2774,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const percentEl = document.getElementById('percentAcertos');
   const correctSound = document.getElementById('correctSound');
   const wrongSound = document.getElementById('wrongSound');
-  const logoFap = document.querySelector('.logo_fap');
-  const logoEfaa = document.querySelector('.logo_efaa');
+
+  const videoTestModal = document.getElementById('videoTestModal');
+  const closeVideoModal = document.getElementById('closeVideoModal');
 
   window.perguntasOriginais = [...perguntas];
 
@@ -2791,52 +2792,62 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function ocultarLogos() {
+    const logoFap = document.querySelector('.logo_fap');
+    const logoEfaa = document.querySelector('.logo_efaa');
     if (logoFap) logoFap.style.display = 'none';
     if (logoEfaa) logoEfaa.style.display = 'none';
   }
 
-  if (startBtn) {
-    startBtn.addEventListener('click', function () {
-      startPage.style.display = 'none';
-      modeSelection.style.display = 'flex';
-    });
-  }
+  // --- Botão Começar ---
+  startBtn?.addEventListener('click', () => {
+    startPage.style.display = 'none';
+    modeSelection.style.display = 'flex';
+  });
 
-  if (randomModeBtn) {
-    randomModeBtn.addEventListener('click', function () {
-      randomOptions.style.display = 'block';
-    });
-  }
+  // --- Perguntas Aleatórias ---
+  randomModeBtn?.addEventListener('click', () => {
+    randomOptions.style.display = 'flex';
+  });
 
-  if (startRandomQuiz) {
-    startRandomQuiz.addEventListener('click', function () {
-      const n = parseInt(numQuestions.value, 10);
-      perguntas = [...window.perguntasOriginais]
-        .sort(() => Math.random() - 0.5)
-        .slice(0, n);
-      indiceAtual = 0;
-      acertos = 0;
-      resultados = [];
-      modeSelection.style.display = 'none';
-      appContainer.style.display = 'block';
-      ocultarLogos();
-      renderPergunta();
-    });
-  }
+  startRandomQuiz?.addEventListener('click', () => {
+    const n = parseInt(numQuestions.value, 10);
+    perguntas = [...window.perguntasOriginais].sort(() => Math.random() - 0.5).slice(0, n);
+    indiceAtual = 0;
+    acertos = 0;
+    resultados = [];
+    modeSelection.style.display = 'none';
+    appContainer.style.display = 'block';
+    ocultarLogos();
+    renderPergunta();
+  });
 
-  if (orderedModeBtn) {
-    orderedModeBtn.addEventListener('click', function () {
-      perguntas = [...window.perguntasOriginais];
-      indiceAtual = 0;
-      acertos = 0;
-      resultados = [];
-      modeSelection.style.display = 'none';
-      appContainer.style.display = 'block';
-      ocultarLogos();
-      renderPergunta();
-    });
-  }
+  // --- Perguntas por Ordem ---
+  orderedModeBtn?.addEventListener('click', () => {
+    perguntas = [...window.perguntasOriginais];
+    indiceAtual = 0;
+    acertos = 0;
+    resultados = [];
+    modeSelection.style.display = 'none';
+    appContainer.style.display = 'block';
+    ocultarLogos();
+    renderPergunta();
+  });
 
+  // --- Video Test Modal ---
+  videoTestBtn?.addEventListener('click', () => {
+    videoTestModal.classList.remove('hidden');
+  });
+
+  closeVideoModal?.addEventListener('click', () => {
+    videoTestModal.classList.add('hidden');
+  });
+
+  // --- Dark Mode ---
+  toggleDarkMode?.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+  });
+
+  // --- Renderizar Pergunta ---
   function renderPergunta() {
     if (!perguntas[indiceAtual]) return;
 
@@ -2858,16 +2869,15 @@ document.addEventListener('DOMContentLoaded', function () {
       <div id="feedback" class="mt-2"></div>
     `;
 
-    if (progressText) progressText.textContent = `Progresso: ${indiceAtual + 1}/${perguntas.length}`;
-    if (progressBar) progressBar.style.width = `${((indiceAtual + 1)/perguntas.length)*100}%`;
+    progressText.textContent = `Progresso: ${indiceAtual + 1}/${perguntas.length}`;
+    progressBar.style.width = `${((indiceAtual + 1)/perguntas.length)*100}%`;
 
-    if (prevBtn) prevBtn.disabled = indiceAtual === 0;
-    if (nextBtn) nextBtn.disabled = false;
+    nextBtn.disabled = false;
 
     podeAvancar = false;
+    nextBtn.textContent = "Confirmar";
 
-    const inputs = document.querySelectorAll('input[name="resposta"]');
-    inputs.forEach(input => {
+    document.querySelectorAll('input[name="resposta"]').forEach(input => {
       input.disabled = false;
       input.parentElement.style.backgroundColor = "";
     });
@@ -2888,22 +2898,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const inputs = form.querySelectorAll('input[name="resposta"]');
     const selecionados = Array.from(inputs).filter(i => i.checked).map(i => Number(i.value));
+    const feedback = document.getElementById('feedback');
+    const perguntaAtual = perguntas[indiceAtual];
+    let corretaArr = Array.isArray(perguntaAtual.correta) ? perguntaAtual.correta : [perguntaAtual.correta];
 
     if (!podeAvancar) {
-      if (selecionados.length === 0) return;
+      if (selecionados.length === 0) return; // impede avançar sem selecionar
 
-      const perguntaAtual = perguntas[indiceAtual];
-      let corretaArr = Array.isArray(perguntaAtual.correta) ? perguntaAtual.correta : [perguntaAtual.correta];
-
-      const feedback = document.getElementById('feedback');
       const corretaResposta = arraysIguais(corretaArr, selecionados);
       if (corretaResposta) {
         acertos++;
-        if (feedback) { feedback.textContent = "Correto!"; feedback.style.color = "green"; }
-        if (correctSound) correctSound.play();
+        feedback.textContent = "Correto!";
+        feedback.style.color = "green";
+        correctSound?.play();
       } else {
-        if (feedback) { feedback.textContent = "Incorreto!"; feedback.style.color = "red"; }
-        if (wrongSound) wrongSound.play();
+        feedback.textContent = "Incorreto!";
+        feedback.style.color = "red";
+        wrongSound?.play();
       }
 
       inputs.forEach(input => {
@@ -2917,7 +2928,9 @@ document.addEventListener('DOMContentLoaded', function () {
       resultados[indiceAtual] = corretaResposta;
       atualizarScore();
       podeAvancar = true;
+      nextBtn.textContent = "Próxima";
     } else {
+      // Avança para próxima
       podeAvancar = false;
       if (indiceAtual < perguntas.length - 1) {
         indiceAtual++;
@@ -2925,42 +2938,24 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         quizContainer.innerHTML = `<h2 class="text-xl font-bold mb-4">Quiz terminado!</h2>
           <p>Acertos: ${acertos} em ${perguntas.length} perguntas.</p>`;
-        if (prevBtn) prevBtn.disabled = true;
-        if (nextBtn) nextBtn.disabled = true;
+        nextBtn.disabled = true;
       }
     }
   }
 
-  if (prevBtn) prevBtn.addEventListener('click', () => {
-    if (indiceAtual > 0) {
-      indiceAtual--;
-      renderPergunta();
-    }
-  });
+  nextBtn?.addEventListener('click', proximaPergunta);
 
-  if (nextBtn) nextBtn.addEventListener('click', proximaPergunta);
-
-  if (toggleDarkMode) {
-    toggleDarkMode.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-    });
-  }
-
-  if (exportBtn) {
-  exportBtn.addEventListener('click', () => {
+  // --- Exportar PDF ---
+  exportBtn?.addEventListener('click', () => {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: "mm", format: "a4" });
-
     const margin = 15;
     const maxWidth = 210 - 2 * margin;
     let y = margin;
-
+    const lineHeight = 6;
     const totalPerguntas = perguntas.length;
     const percentAcerto = totalPerguntas > 0 ? Math.round((acertos / totalPerguntas) * 100) : 0;
 
-    const lineHeight = 6; // altura de cada linha
-
-    // --- Cabeçalho ---
     doc.setFontSize(20);
     doc.setFont(undefined, 'bold');
     doc.setTextColor(30, 30, 60);
@@ -2977,80 +2972,45 @@ document.addEventListener('DOMContentLoaded', function () {
     doc.text(`Percentual de acerto: ${percentAcerto}%`, margin, y);
     y += lineHeight * 2;
 
-    // Linha divisória
-    doc.setDrawColor(100, 100, 150);
-    doc.setLineWidth(0.7);
-    doc.line(margin, y, 210 - margin, y);
-    y += lineHeight;
-
-    // --- Perguntas ---
-    perguntas.forEach((p, i) => {
+    perguntas.forEach((p,i) => {
       const blocoPadding = 4;
       const blocoWidth = maxWidth;
-      const blocoColor = i % 2 === 0 ? [245, 245, 245] : [220, 235, 245];
+      const blocoColor = i%2===0?[245,245,245]:[220,235,245];
 
-      // Quebra de texto da pergunta
-      const perguntaLinhas = doc.splitTextToSize(`${i + 1}. ${p.pergunta}`, blocoWidth - 2 * blocoPadding);
-
-      // Quebra de texto das opções
-      const opLinhasArray = p.opcoes.map((op, idx) => {
-        const isCorreta = Array.isArray(p.correta) ? p.correta.includes(idx) : p.correta === idx;
-        const textoOpcao = `${String.fromCharCode(97 + idx)}) ${op}`;
-        return { linhas: doc.splitTextToSize(textoOpcao, blocoWidth - 2 * blocoPadding), isCorreta };
+      const perguntaLinhas = doc.splitTextToSize(`${i+1}. ${p.pergunta}`, blocoWidth - 2*blocoPadding);
+      const opLinhasArray = p.opcoes.map((op, idx)=>{
+        const isCorreta = Array.isArray(p.correta)?p.correta.includes(idx):p.correta===idx;
+        return { linhas: doc.splitTextToSize(`${String.fromCharCode(97+idx)}) ${op}`, blocoWidth - 2*blocoPadding), isCorreta };
       });
 
-      // Calcular altura total do bloco
-      let blocoAltura = perguntaLinhas.length * lineHeight + lineHeight; // pergunta + espaçamento
-      opLinhasArray.forEach(opItem => blocoAltura += opItem.linhas.length * lineHeight);
-      blocoAltura += lineHeight; // resultado final
-      blocoAltura += 2 * blocoPadding; // padding
+      let blocoAltura = perguntaLinhas.length*lineHeight + lineHeight;
+      opLinhasArray.forEach(opItem=>blocoAltura+=opItem.linhas.length*lineHeight);
+      blocoAltura += lineHeight + 2*blocoPadding;
 
-      // Quebra de página automática se necessário
-      if (y + blocoAltura > 297 - margin) {
-        doc.addPage();
-        y = margin;
-      }
-
-      // Fundo do bloco
+      if(y+blocoAltura>297-margin){doc.addPage();y=margin;}
       doc.setFillColor(...blocoColor);
-      doc.roundedRect(margin, y - blocoPadding, blocoWidth, blocoAltura, 3, 3, 'F');
-
-      // Borda azul escuro
-      doc.setDrawColor(30, 60, 120);
+      doc.roundedRect(margin, y-blocoPadding, blocoWidth, blocoAltura,3,3,'F');
+      doc.setDrawColor(30,60,120);
       doc.setLineWidth(0.7);
-      doc.roundedRect(margin, y - blocoPadding, blocoWidth, blocoAltura, 3, 3, 'S');
+      doc.roundedRect(margin, y-blocoPadding, blocoWidth, blocoAltura,3,3,'S');
 
-      // Pergunta
-      doc.setFont(undefined, 'bold');
-      doc.setTextColor(30, 60, 120);
-      perguntaLinhas.forEach(line => {
-        doc.text(line, margin + blocoPadding, y);
-        y += lineHeight;
-      });
-      y += 2; // pequeno espaço antes das opções
+      doc.setFont(undefined,'bold'); doc.setTextColor(30,60,120);
+      perguntaLinhas.forEach(line=>{doc.text(line, margin+blocoPadding, y); y+=lineHeight;});
+      y+=2;
 
-      // Opções
-      doc.setFont(undefined, 'normal');
-      opLinhasArray.forEach(opItem => {
-        doc.setTextColor(opItem.isCorreta ? "green" : 50);
-        opItem.linhas.forEach(line => {
-          doc.text(line, margin + blocoPadding, y);
-          y += lineHeight;
-        });
+      doc.setFont(undefined,'normal');
+      opLinhasArray.forEach(opItem=>{
+        doc.setTextColor(opItem.isCorreta?"green":50);
+        opItem.linhas.forEach(line=>{doc.text(line, margin+blocoPadding, y); y+=lineHeight;});
       });
 
-      y += 2; // pequeno espaço antes do resultado
-
-      // Resultado final
-      const userResp = resultados[i] !== undefined ? resultados[i] : false;
-      doc.setFont(undefined, 'bold');
-      doc.setTextColor(userResp ? "green" : "red");
-      doc.text(userResp ? "Correto" : "Incorreto", margin + blocoPadding, y);
-      y += lineHeight + blocoPadding;
+      y+=2;
+      const userResp = resultados[i]!==undefined?resultados[i]:false;
+      doc.setFont(undefined,'bold'); doc.setTextColor(userResp?"green":"red");
+      doc.text(userResp?"Correto":"Incorreto", margin+blocoPadding, y);
+      y+=lineHeight+blocoPadding;
     });
 
     doc.save("resultados_quiz_profissional_final.pdf");
   });
-}
-
-  });
+});
