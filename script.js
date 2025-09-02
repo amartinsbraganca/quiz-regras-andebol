@@ -256,7 +256,9 @@ let perguntas = [
     "pergunta": "2.26) Pouco antes do fim da primeira parte, o jogador nº. 7 da equipa BRANCA agride o jogador nº. 5 da equipa PRETA, que perde assim uma clara hipótese de golo. O sinal automático do relógio do pavilhão soa antes que os árbitros tenham tempo para apitar. Qual a decisão correta?",
     "opcoes": ["a) A primeira parte terminou; nenhuma outra ação",
 "b) Desqualificação do jogador nº. 7 da equipa BRANCA, sem relatório escrito (cartão vermelho mostrado pelos árbitros).",
-"c) Livre de 7 metrospara a equipa PRETA."],
+"c) Livre de 7 metrospara a equipa PRETA.","d) Lançamento livre para a equipa PRETA.",
+"e) Desqualificação do jogador nº. 7 da equipa BRANCA. Relatório escrito (cartões vermelhoe azul mostrados pelos árbitros).",
+"f) A equipa BRANCA vai ser reduzida em um jogador em campo durante 2 minutos a partir do início da segunda parte."],
     "correta": [2,4,5]
   },
   {
