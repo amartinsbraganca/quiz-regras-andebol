@@ -43,6 +43,7 @@
 
     <button id="orderedModeBtn" class="mode-btn yellow-btn">Perguntas por Ordem</button>
     <button id="videoTestBtn" class="mode-btn purple-btn">Video Test</button>
+    <button id="rulesModeBtn" class="mode-btn pink-btn">Regras</button>
   </div>
 
   <!-- Modal Video Test -->
@@ -53,20 +54,25 @@
     </div>
   </div>
 
+  <!-- Modal Regras -->
+  <div id="rulesModal" class="modal hidden">
+    <div class="modal-content">
+      <h2 class="text-xl font-bold mb-4">Escolha uma regra</h2>
+      <div id="rulesList" class="flex flex-col gap-2 max-h-96 overflow-y-auto"></div>
+      <button id="closeRulesModal" class="mode-btn pink-btn mt-4">Fechar</button>
+    </div>
+  </div>
+
   <!-- Container do quiz -->
   <div class="app-container" id="appContainer" style="display:none;">
 
     <header class="header flex justify-between items-center p-4 border-b border-blue-200 dark:border-gray-700">
-  <h1 class="text-xl font-bold text-blue-800 dark:text-blue-200">Quiz Interativo</h1>
-  
-  <div class="header-actions flex items-center gap-2">
-    <!-- Botão Home -->
-    <button id="backBtn" class="header-btn" title="Retroceder">🏠</button>
-    <!-- Botão Modo Noturno -->
-    <button id="toggleDarkMode" class="header-btn" title="Alternar modo escuro">🌙</button>
-  </div>
-</header>
-
+      <h1 class="text-xl font-bold text-blue-800 dark:text-blue-200">Quiz Interativo</h1>
+      <div class="header-actions flex items-center gap-2">
+        <button id="backBtn" class="header-btn" title="Retroceder">🏠</button>
+        <button id="toggleDarkMode" class="header-btn" title="Alternar modo escuro">🌙</button>
+      </div>
+    </header>
 
     <div class="progress-container p-4">
       <p id="progress">Progresso: 0/0</p>
@@ -77,12 +83,12 @@
     </div>
 
     <!-- Modal de confirmação -->
-<div id="backConfirmModal" class="modal hidden">
+    <div id="backConfirmModal" class="modal hidden">
   <div class="modal-content">
     <p>Decerteza que quer ir para a página principal?</p>
     <div class="flex justify-center gap-4 mt-4">
-      <button id="backYesBtn" class="mode-btn red-btn">Sim</button>
-      <button id="backNoBtn" class="mode-btn gray-btn">Não</button>
+      <button id="backYesBtn" class="mode-btn green-btn-alt">Sim</button>
+      <button id="backNoBtn" class="mode-btn red-btn-alt">Não</button>
     </div>
   </div>
 </div>
@@ -113,4 +119,3 @@
   <div class="copyright-text">© 2025, Alexandre Bragança</div>
 </body>
 </html>
-
