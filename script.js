@@ -5599,7 +5599,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const closeVideoModal = document.getElementById('closeVideoModal');
   const rulesModal = document.getElementById('rulesModal');
   const rulesList = document.getElementById('rulesList');
-  const closeRulesModal = document.getElementById('closeRulesModal');
+  const closerulesModal = document.getElementById('closerulesModal');
 
   const backBtn = document.getElementById('backBtn');
   const backConfirmModal = document.getElementById('backConfirmModal');
@@ -5671,7 +5671,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     rulesModal.classList.remove('hidden');
   });
-  closeRulesModal?.addEventListener('click', ()=> rulesModal.classList.add('hidden'));
+  closerulesModal?.addEventListener('click', ()=> rulesModal.classList.add('hidden'));
 
   backBtn?.addEventListener('click', ()=> backConfirmModal.classList.remove('hidden'));
   backNoBtn?.addEventListener('click', ()=> backConfirmModal.classList.add('hidden'));
