@@ -1191,7 +1191,7 @@ let perguntas = [
 },
 {
     "pergunta": "7.19) O jogador nº. 3 da equipa BRANCA, faz um remate à baliza da equipa PRETA e atinge o poste da baliza. A bola rola para fora da área de baliza. Na linha de lançamento livre, o jogador nº. 3 da equipa BRANCA e o jogador nº. 4 da equipa PRETA mergulham para a bola, sem se colocarem em perigo um ao outro. O jogador nº. 4 da equipa PRETA, consegue empurrar a bola para o jogador nº. 6 da equipa PRETA, que começa um contra-ataque e marca um golo. Qual a decisão correta?",
-    "opcoes": ["a) Advertência para o jogador nº. 4 da equipa PRETA.", "b) Golo para a equipa PRETA. c) Lançamento livre para a equipa BRANCA ou para a equipa PRETA dependendo das circunstâncias.", "d) Lançamento de baliza para a equipa PRETA."],
+    "opcoes": ["a) Advertência para o jogador nº. 4 da equipa PRETA.", "b) Golo para a equipa PRETA.", "c) Lançamento livre para a equipa BRANCA ou para a equipa PRETA dependendo das circunstâncias.", "d) Lançamento de baliza para a equipa PRETA."],
     "correta": 1
 },
 {
