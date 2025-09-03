@@ -2887,6 +2887,34 @@ document.addEventListener('DOMContentLoaded', function () {
     atualizarScore();
   }
 
+  // --- Botão Retroceder ---
+const backBtn = document.getElementById('backBtn');
+const backConfirmModal = document.getElementById('backConfirmModal');
+const backYesBtn = document.getElementById('backYesBtn');
+const backNoBtn = document.getElementById('backNoBtn');
+
+backBtn?.addEventListener('click', () => {
+  backConfirmModal.classList.remove('hidden');
+});
+
+backNoBtn?.addEventListener('click', () => {
+  backConfirmModal.classList.add('hidden');
+});
+
+backYesBtn?.addEventListener('click', () => {
+  // Volta para a página inicial
+  document.getElementById('appContainer').style.display = 'none';
+  document.getElementById('startPage').style.display = 'flex';
+  document.getElementById('modeSelection').style.display = 'none';
+  
+  backConfirmModal.classList.add('hidden');
+
+  // Resetar variáveis do quiz se necessário
+  indiceAtual = 0;
+  acertos = 0;
+  resultados = [];
+  atualizarScore();
+});
   function arraysIguais(a, b) {
     if (a.length !== b.length) return false;
     const sortedA = [...a].sort();
