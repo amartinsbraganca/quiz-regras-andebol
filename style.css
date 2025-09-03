@@ -245,3 +245,25 @@ input.wrong + label, label.wrong { background-color: #fecaca !important; }
 .red-btn:hover { background: #dc2626; }
 .gray-btn { background: #6b7280; color: white; }
 .gray-btn:hover { background: #4b5563; }
+
+.modal {
+  position: fixed;           /* fixa na tela inteira */
+  inset: 0;                  /* top/right/bottom/left = 0 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1000;             /* muito alto para ficar acima de tudo */
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.hidden { display: none; }
