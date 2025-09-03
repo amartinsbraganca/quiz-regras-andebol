@@ -5658,7 +5658,7 @@ document.addEventListener('DOMContentLoaded', function () {
     rulesList.innerHTML='';
     regras.forEach((regra,idx)=>{
       const btn=document.createElement('button');
-      btn.textContent=`${idx+1}. ${regra}`;
+      btn.textContent= regra;
       btn.style.backgroundColor=coresRegras[idx];
       btn.style.color='white';
       btn.style.padding='0.5rem 1rem';
