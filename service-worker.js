@@ -1,4 +1,4 @@
-const CACHE_NAME = "quiz-cache-v1";
+const CACHE_NAME = "quiz-cache-v2"; // muda esta versão sempre que fizeres updates
 const urlsToCache = [
   "/",
   "/index.html",
@@ -16,13 +16,34 @@ self.addEventListener("install", (event) => {
       return cache.addAll(urlsToCache);
     })
   );
+  self.skipWaiting(); // força o service worker a ativar imediatamente
 });
 
-// Usa cache primeiro, depois rede
+// Ativa o service worker e limpa caches antigos
+self.addEventListener("activate", (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(
+        keys.filter((key) => key !== CACHE_NAME)
+            .map((key) => caches.delete(key))
+      )
+    )
+  );
+  self.clients.claim(); // garante que o novo SW controla imediatamente
+});
+
+// Fetch: responde do cache primeiro, depois da rede
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
       return response || fetch(event.request);
     })
   );
+});
+
+// --- Detectar nova versão e avisar o usuário ---
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });

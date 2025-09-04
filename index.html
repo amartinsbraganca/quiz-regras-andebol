@@ -125,6 +125,37 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="script.js"></script>
 
+   <!-- Service Worker Inteligente -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+        .then((reg) => {
+          console.log("✅ Service Worker registado");
+
+          reg.addEventListener("updatefound", () => {
+            const newWorker = reg.installing;
+            newWorker.addEventListener("statechange", () => {
+              if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+                const updateBanner = document.createElement("div");
+                updateBanner.innerHTML = `
+                  <div style="position:fixed;bottom:10px;left:50%;transform:translateX(-50%);
+                              background:#2563eb;color:white;padding:10px 20px;border-radius:8px;
+                              box-shadow:0 4px 12px rgba(0,0,0,0.2);cursor:pointer;z-index:9999;">
+                    Nova versão disponível! Clique aqui para atualizar.
+                  </div>`;
+                document.body.appendChild(updateBanner);
+                updateBanner.addEventListener("click", () => {
+                  newWorker.postMessage({ type: "SKIP_WAITING" });
+                  window.location.reload();
+                });
+              }
+            });
+          });
+        })
+        .catch((err) => console.log("❌ Falha ao registar Service Worker:", err));
+    }
+  </script>
+
   <div class="copyright-text">© 2025, Alexandre Bragança</div>
 </body>
 </html>
