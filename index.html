@@ -2,6 +2,15 @@
 <html lang="pt" class="h-full w-full">
 <head>
   <meta charset="UTF-8" />
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2563eb">
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js")
+      .then(() => console.log("✅ Service Worker registado"))
+      .catch(err => console.log("❌ Falha ao registar Service Worker:", err));
+  }
+</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quiz Interativo</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
