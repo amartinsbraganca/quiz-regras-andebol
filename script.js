@@ -3441,8 +3441,8 @@ let perguntas = [
         "pergunta": "8.63) O marcador está 28 26 para a equipa BRANCA. Com 25 segundos restantes no jogo, a equipa PRETA marca um golo. O guarda-redes nº. 12 da equipa BRANCA chuta a bola de propósito, para as bancadas. É claro que ele chuta a bola com a intenção de atrasar o jogo, para que o lançamento de saída não possa ser executado imediatamente.  Qual é a decisão correta?",
         "opcoes": [
             "a) Time-out",
-            "b) Lançamento da equipa BRANCA.",
-            "c) Lançamento de saída para a equipa PRETA",
+            "b) Lançamento de saída para a equipa BRANCA.",
+            "c) Lançamento livre para a equipa PRETA",
             "d) Livre de 7 metros para a equipa PRETA",
             "e) Exclusão de 2 minutos para o jogador nº. 12 da equipa BRANCA",
             "f) Desqualificação para o jogador nº. 12 da equipa BRANCA (cartão vermelho mostrado pelos árbitros).",
@@ -3668,7 +3668,7 @@ let perguntas = [
         "regra": 8
     },
     {
-        "pergunta": "8.77) O jogador ponta nº. 8 da equipa PRETA recebe a bola. Quando ele está a tentar virar-se em direção à baliza é agarrado com força e puxado para baixo por BRANCO 7. No entanto, BRANCO 8 recupera o controlo total do corpo. Sem jogadores entre ele e o Guarda-redes, ele salta por cima da área de baliza e remata forte com o controlo total do corpo. A bola atinge a cabeça do guarda-redes BRANCO 1. A cabeça foi o primeiro ponto de contato da bola. A bola muda de direção e entra na baliza. Qual a decisão correta?",
+        "pergunta": "8.77) O jogador ponta nº. 8 da equipa PRETA recebe a bola. Quando ele está a tentar virar-se em direção à baliza é agarrado com força e puxado para baixo por BRANCO 7. No entanto, PRETO 8 recupera o controlo total do corpo. Sem jogadores entre ele e o Guarda-redes, ele salta por cima da área de baliza e remata forte com o controlo total do corpo. A bola atinge a cabeça do guarda-redes BRANCO 1. A cabeça foi o primeiro ponto de contato da bola. A bola muda de direção e entra na baliza. Qual a decisão correta?",
         "opcoes": [
             "a) Golo para a equipa PRETA",
             "b) Lance livre para a equipa BRANCA",
