@@ -1809,7 +1809,7 @@ PRETA. A partir daí a bola cai nos braços do guarda-redes nº. 1 da equipa PRE
     "correta": 0
 },
 {
-    "pergunta": "O jogador nº. 7 da equipa BRANCA está num contra-ataque. Ele remata à baliza e atinge o guarda-redes nº. 12 da equipa PRETA na cabeça, com a bola, de modo que o guarda-redes nº. 12 da equipa PRETA desmaia. A bola volta para o jogador nº. 9 da equipa BRANCA, que está sozinho junto à linha da área de baliza. O jogador nº. 9 da equipa BRANCA remata a bola em direção à baliza vazia. Pouco antes da bola cruzar a linha de baliza, o árbitro apita e interrompe o jogo. O Guarda-redes nº. 12 da equipa PRETA precisa de ser assistido no campo. Qual a decisão correta?",
+    "pergunta": "O jogador nº. 7 da equipa BRANCA está num contra-ataque. Com um jogador da equipa PRETA entre ele e o guarda-redes, remata à baliza e atinge o guarda-redes nº. 12 da equipa PRETA na cabeça, com a bola, de modo que o guarda-redes nº. 12 da equipa PRETA desmaia. A bola volta para o jogador nº. 9 da equipa BRANCA, que está sozinho junto à linha da área de baliza. O jogador nº. 9 da equipa BRANCA remata a bola em direção à baliza vazia. Pouco antes da bola cruzar a linha de baliza, o árbitro apita e interrompe o jogo. O Guarda-redes nº. 12 da equipa PRETA precisa de ser assistido no campo. Qual a decisão correta?",
     "opcoes": ["a) Golo para a equipa BRANCA.", "b) Livre de 7 metrospara a equipa BRANCA.", "c) Lançamento livre para a equipa BRANCA após o sinal de apito.", "d) Time-out.", "e) O guarda-redes nº. 12 da equipa PRETA deve deixar o campo e só pode reentrar após o terceiro ataque da sua equipa."],
     "correta": [2,3]
 },
