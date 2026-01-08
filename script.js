@@ -4304,7 +4304,7 @@ let perguntas = [
         "regra": 13
     },
     {
-        "pergunta": "13.7) O jogador nº. 7 da equipa BRANCA está num contra-ataque. Ele remata à baliza e atinge o guarda-redes nº. 12 da equipa PRETA na cabeça, com a bola, de modo que o guarda-redes nº. 12 da equipa PRETA desmaia. A bola volta para o jogador nº. 9 da equipa BRANCA, que está sozinho junto à linha da área de baliza. O jogador nº. 9 da equipa BRANCA remata a bola em direção à baliza vazia. Pouco antes da bola cruzar a linha de baliza, o árbitro apita e interrompe o jogo. O Guarda-redes nº. 12 da equipa PRETA precisa de ser assistido no campo. Qual a decisão correta?",
+        "pergunta": "13.7) O jogador nº. 7 da equipa BRANCA está num contra-ataque.Com um jogador da equipa PRETA entre ele e o guarda-redes, remata à baliza e atinge o guarda-redes nº. 12 da equipa PRETA na cabeça, com a bola, de modo que o guarda-redes nº. 12 da equipa PRETA desmaia. A bola volta para o jogador nº. 9 da equipa BRANCA, que está sozinho junto à linha da área de baliza. O jogador nº. 9 da equipa BRANCA remata a bola em direção à baliza vazia. Pouco antes da bola cruzar a linha de baliza, o árbitro apita e interrompe o jogo. O Guarda-redes nº. 12 da equipa PRETA precisa de ser assistido no campo. Qual a decisão correta?",
         "opcoes": [
             "a) Golo para a equipa BRANCA.",
             "b) Livre de 7 metrospara a equipa BRANCA.",
