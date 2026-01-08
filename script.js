@@ -390,7 +390,7 @@ let perguntas = [
         "regra": 2
     },
     {
-        "pergunta": "2.26) Pouco antes do fim da primeira parte, o jogador nº. 7 da equipa BRANCA agride o jogador nº. 5 da equipa PRETA, que perde assim uma clara hipótese de golo. O sinal automático do relógio do pavilhão soa antes que os árbitros tenham tempo para apitar. Qual a decisão correta?",
+        "pergunta": "2.26) Pouco antes do fim da primeira parte, o jogador nº. 7 da equipa BRANCA agride o jogador nº. 5 da equipa PRETA, que perde assim uma clara oportunidade de golo. O sinal automático do relógio do pavilhão soa antes que os árbitros tenham tempo para apitar. Qual a decisão correta?",
         "opcoes": [
             "a) A primeira parte terminou; nenhuma outra ação",
             "b) Desqualificação do jogador nº. 7 da equipa BRANCA, sem relatório escrito (cartão vermelho mostrado pelos árbitros).",
@@ -422,13 +422,13 @@ let perguntas = [
         "regra": 2
     },
     {
-        "pergunta": "2.28) Que posições devem assumir os jogadores durante a execução de um lance livre a executar após o apito final?",
+        "pergunta": "2.28) Que posições devem assumir os jogadores durante a execução de um lançamento livre a executar após o apito final?",
         "opcoes": [
-            "a) Todos os colegas de equipa do lançador devem estar fora da linha de lance livre dos adversários.",
-            "b) Todos os colegas de equipa do lançador devem estar em sua própria metade da quadra.",
-            "c) Os adversários devem estar a 3 metros de distância do executante ou na sua própria linha de área de golo.",
-            "d) Todos os colegas de equipa do lançador devem estar a pelo menos 3 metros de distância do lançador.",
-            "e) Todos os colegas de equipa do executante podem ficar juntamente com o o mesmo na linha de lance livre dos adversários"
+            "a) Todos os colegas de equipa do executante devem estar fora da linha de lance livre dos adversários.",
+            "b) Todos os colegas de equipa do executante devem estar em sua própria metade da quadra.",
+            "c) Os adversários devem estar a 3 metros de distância do executante ou na sua própria linha de área de baliza.",
+            "d) Todos os colegas de equipa do executante devem estar a pelo menos 3 metros de distância do lançador.",
+            "e) Todos os colegas de equipa do executante podem ficar juntamente com o o mesmo na linha de lançamento livre dos adversários"
         ],
         "correta": [
             0,
@@ -822,10 +822,10 @@ let perguntas = [
         "opcoes": [
             "a) Time-out de equipa para a equipa BRANCA.",
             "b) Não é possível qualquer time-out de equipa, e o CARTÃO VERDE é devolvido ao Oficial A da equipa BRANCA.",
-            "c) Lance livre para a equipa BRANCA.",
+            "c) Lançamento livre para a equipa BRANCA.",
             "d) Lançamento de BALIZA para a equipa PRETA.",
             "e) Lançamento livre para a equipa PRETA.",
-            "f) Livre de 7 metros para a equipa BRANCA"
+            "f) Lançamento de 7 metros para a equipa BRANCA"
         ],
         "correta": [
             0,
@@ -1074,7 +1074,7 @@ let perguntas = [
         "pergunta": "4.16) Depois dos árbitros marcarem um livre de 7 metros para a equipa BRANCA, o jogador nº. 27 da equipa BRANCA, que foi escolhido para concretizar o livre de 7 metros, faz uma substituição irregular. Qual a decisão correta?",
         "opcoes": [
             "a) Lançamento livre para a equipa PRETA.",
-            "b) Livre de 7 metrospara a equipa BRANCA.",
+            "b) Lançamento de 7 metrospara a equipa BRANCA.",
             "c) Lançamento de baliza para a equipa PRETA.",
             "d) Exclusão de 2 minutos para o jogador nº. 27 da equipa BRANCA."
         ],
@@ -1186,7 +1186,7 @@ let perguntas = [
         "opcoes": [
             "a) Uma outra exclusão de 2 minutos para o jogador nº. 5 da equipa BRANCA, e a equipa BRANCA é reduzida em um jogador em campo por 2 minutos e 15 segundos.",
             "b) Exclusão para o jogador nº. 5 da equipa BRANCA (cartão vermelho mostrado pelos árbitros), e a equipa BRANCA é reduzido por dois jogadores em campo por 15 segundos e por um jogador em campo por 1 minuto e 45 segundos.",
-            "c) Uma outra exclusão de 2 minutos para o jogador nº. 5 da equipa BRANCA e a equipa BRANCA é reduzida por dois jogadores em campo, um por 15 segundos e outro por 1 minuto e 45 segundos."
+            "c) Uma outra exclusão de 2 minutos para o jogador nº. 5 da equipa BRANCA e a equipa BRANCA é reduzida por dois jogadores em campo durante 15 segundos e em um jogador em campo por 1 minuto e 45 segundos."
         ],
         "correta": 2,
         "regra": 4
@@ -2425,7 +2425,7 @@ let perguntas = [
         "opcoes": [
             "a) A uma equipa não deve ser permitida mais de 5 segundos para passar da fase de construção até a fase de execução",
             "b) Os árbitros devem estar cientes das substituições lentas e tardias, depois do lançamento de saída já ter sido executado.",
-            "c) Os árbitros devem observar se a equipa está a tentar aumentar o “tempo” ou ganhar uma vantagem de espaço durante a fase de construção.",
+            "c) Os árbitros devem observar se a equipa está a tentar aumentar o “ritmo” ou ganhar uma vantagem de espaço durante a fase de construção.",
             "d) Os árbitros devem estar atentos ao jogo passivo, desde logo que uma equipa ganhe aposse de bola na sua própria metade do campo.",
             "e) A uma equipa, que tentou fazer um contra-ataque, deve ser permitida uma substituição normal, ao mudar do contra-ataque para uma fase normal de construção."
         ],
@@ -3487,7 +3487,7 @@ let perguntas = [
         "regra": 8
     },
     {
-        "pergunta": "8.66) O marcador está 26 26 com 4 segundos restantes no jogo para jogar. A equipa BRANCA está no ataque. Um lançamento livre é causado pelo jogador nº. 4 da equipa BRANCA. O jogador nº. 4 da equipa BRANCA executa imediatamente o lançamento livre. A bola é ativamente bloqueada pelo jogador nº. 5 da equipa PRETA, que está muito perto. Ao mesmo tempo, o sinal final soa. Qual é a decisão correta?",
+        "pergunta": "8.66) O marcador está 26 26 com 4 segundos restantes no jogo para jogar. A equipa BRANCA está no ataque. Um lançamento livre é causado pelo jogador nº. 4 da equipa PRETA. O jogador nº. 4 da equipa BRANCA executa imediatamente o lançamento livre. A bola é ativamente bloqueada pelo jogador nº. 5 da equipa PRETA, que está muito perto. Ao mesmo tempo, o sinal final soa. Qual é a decisão correta?",
         "opcoes": [
             "a) O lançamento livre deve ser repetido.",
             "b) Livre de 7 metros para a equipa BRANCA",
@@ -3925,7 +3925,7 @@ let perguntas = [
         "pergunta": "10.8) (Com área de lançamento de saída) - A equipa BRANCA marcou um golo. A equipa PRETA quer executar um lançamento de saída rápidamente. PRETO 9 está numa posição correta dentro da área de lançamento. Após os árbitros apitarem para a execução, o PRETO 9 dá 6 passos com a bola dentro da área de lançamento. Após o sinal de apito para a execução do lançamento de saída, dentro de 3 segundos, PRETO 9 arremessa a bola para a baliza vazia da equipa BRANCA. Qual a decisão correta?",
         "opcoes": [
             "a) Golo para a equipa PRETA.",
-            "b) Lance livre para a equipa BRANCA.",
+            "b) Lançamento livre para a equipa BRANCA.",
             "c) Correção, e novo lançamento de saída após o apito dos árbitros."
         ],
         "correta": 0,
@@ -5080,7 +5080,7 @@ let perguntas = [
         "regra": 16
     },
     {
-        "pergunta": "16.6) O jogador nº. 5 da equipa PRETA no início do jogo recebe duas suspensões de 2 minutos. Uma exclusão por falta que foi punida progressivamente, e outra por jogar a bola para longe quando os árbitros assinalaram um lançamento livre para os adversários. Agora ele comete a segunda substituição irregular da sua equipa, e antes do jogo ser retomado ele comete uma conduta extremamente antidesportiva. Qual a decisão correta?",
+        "pergunta": "16.6) O jogador nº. 5 da equipa PRETA no início do jogo recebe duas suspensões de 2 minutos. Uma exclusão por falta que foi punida progressivamente, e outra por jogar a bola para longe quando os árbitros assinalaram um lançamento livre para os adversários. Agora ele comete a segunda substituição irregular da sua equipa, e antes do jogo ser retomado ele comete uma conduta antidesportiva extremamente grave. Qual a decisão correta?",
         "opcoes": [
             "a) Exclusão de 2 minutos para o jogador nº. 5 da equipa PRETA.",
             "b) Desqualificação para o jogador nº. 5 da equipa PRETA, relatório escrito (cartões vermelho e azul mostrados pelos árbitros; A equipa PRETA é reduzida com um jogador em campo por 4 minutos.",
@@ -5553,9 +5553,9 @@ let perguntas = [
         "pergunta": "SAR2) O Oficial A da equipa BRANCA já recebeu um aviso enquanto estava sentado no banco. Ele agora deixa a área de substituição e senta-se na área dos espectadores. A partir desta posição, continua a protestar contra as decisões dos árbitros. Decisão correta?",
         "opcoes": [
             "a) Inexistência de ação.",
-            "b) Suspensão de 2 minutos para o Oficial A da equipa BRANCA.",
-            "c) Desclassificação do Oficial A da equipa BRANCA (cartão vermelho mostrado pelos árbitros).",
-            "d) Desclassificação do Oficial A da equipa BRANCA, relatório escrito (cartões vermelhos e azuis mostrados pelos árbitros).",
+            "b) Exclusão de 2 minutos para o Oficial A da equipa BRANCA.",
+            "c) Desqualificação do Oficial A da equipa BRANCA (cartão vermelho mostrado pelos árbitros).",
+            "d) Desqualificação do Oficial A da equipa BRANCA, relatório escrito (cartões vermelhos e azuis mostrados pelos árbitros).",
             "e) A equipa BRANCA será reduzida em 1 jogador em campo por 2 minutos."
         ],
         "correta": [
