@@ -5547,7 +5547,8 @@ let perguntas = [
             "c) 3 metros",
             "d) 3,5 metros"
         ],
-        "correta": 3
+        "correta": 3,
+        "regra": "SAR"
     },
     {
         "pergunta": "SAR2) O Oficial A da equipa BRANCA já recebeu um aviso enquanto estava sentado no banco. Ele agora deixa a área de substituição e senta-se na área dos espectadores. A partir desta posição, continua a protestar contra as decisões dos árbitros. Decisão correta?",
@@ -5561,7 +5562,8 @@ let perguntas = [
         "correta": [
             1,
             4
-        ]
+        ],
+        "regra": "SAR"
     }
 ]
 
@@ -5609,15 +5611,14 @@ document.addEventListener('DOMContentLoaded', function () {
   window.perguntasOriginais = [...perguntas];
 
   const regras = [
-    "Regra 1","Regra 2","Regra 3","Regra 4","Regra 5","Regra 6",
-    "Regra 7","Regra 8","Regra 9","Regra 10","Regra 11","Regra 12",
-    "Regra 13","Regra 14","Regra 15","Regra 16","Regra 17","Regra 18"
+    ...Array.from({ length: 18 }, (_, i) => ({ nome: `Regra ${i+1}`, valor: i+1 })),
+    { nome: "SAR - Zona de Substituições", valor: "SAR" }
   ];
   const coresRegras = [
     "#f87171","#fbbf24","#34d399","#60a5fa","#a78bfa",
     "#f472b6","#facc15","#4ade80","#3b82f6","#c084fc",
     "#f472b6","#fb7185","#fcd34d","#34d399","#60a5fa",
-    "#818cf8","#f472b6","#f472b6"
+    "#818cf8","#f472b6","#f472b6","#2dd4bf"
   ];
 
   // --------------------
@@ -5658,7 +5659,7 @@ document.addEventListener('DOMContentLoaded', function () {
     rulesList.innerHTML='';
     regras.forEach((regra,idx)=>{
       const btn=document.createElement('button');
-      btn.textContent= regra;
+      btn.textContent= regra.nome;
       btn.style.backgroundColor=coresRegras[idx];
       btn.style.color='white';
       btn.style.padding='0.5rem 1rem';
@@ -5666,7 +5667,7 @@ document.addEventListener('DOMContentLoaded', function () {
       btn.style.borderRadius='0.5rem';
       btn.style.cursor='pointer';
       btn.style.fontWeight='600';
-      btn.addEventListener('click', ()=> startQuizPorRegra(idx+1));
+      btn.addEventListener('click', ()=> startQuizPorRegra(regra.valor));
       rulesList.appendChild(btn);
     });
     rulesModal.classList.remove('hidden');

@@ -7,11 +7,11 @@ Suggested order: **1–6**, then **8 + 10**, then **14 + 15**.
 ## Decisions
 
 - **PDF export (#2):** exporting must not be possible on an incomplete quiz. Hide "Exportar Resultados" during the quiz, show it only on the "Quiz terminado!" screen, and hide it again on back / new quiz. Also show the options the user selected in the PDF.
-- **SAR questions (#1):** "SAR" = Substitution Area Regulations (Regulamento da Zona de Substituição). Proposal: `"regra": "SAR"` plus an SAR button in rules mode, instead of folding them into Rule 4. *Pending confirmation.*
+- **SAR questions (#1):** "SAR" = Substitution Area Regulations (Regulamento da Zona de Substituição). Decided: `"regra": "SAR"` plus a "SAR - Zona de Substituições" button after Regra 18 (not folded into Rule 4). New SAR questions just need `"regra": "SAR"`.
 
 ## 1. Bugs
 
-- [ ] 1. `SAR1` / `SAR2` (last 2 questions) have no `regra`, so they never appear in rules mode.
+- [x] 1. `SAR1` / `SAR2` (last 2 questions) have no `regra`, so they never appear in rules mode.
 - [ ] 2. PDF export lists every question, marks unanswered ones as "Incorreto", and calculates the percentage over all questions instead of answered ones. Fix per the decision above.
 - [ ] 3. Service worker is cache-first, so users keep stale questions unless `CACHE_NAME` is bumped. Switch to network-first for `index.html` / `script.js`.
 - [ ] 4. Offline cache is missing Tailwind, jsPDF, the logos and the sounds.
