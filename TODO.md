@@ -17,7 +17,7 @@ Suggested order: **1–6**, then **8 + 10**, then **14 + 15**.
 - [x] 4. Offline cache is missing Tailwind, jsPDF, the logos and the sounds.
 - [x] 5. Service worker is registered twice in `index.html` (keep the bottom block with the update banner).
 - [x] 6. Random mode shuffle `sort(() => Math.random() - 0.5)` is biased. Use Fisher–Yates.
-- [ ] 7. `arraysIguais` sorts both arrays in place, mutating the question's `correta`.
+- [x] 7. `arraysIguais` sorts both arrays in place, mutating the question's `correta`.
 
 ## 2. Code and data structure
 

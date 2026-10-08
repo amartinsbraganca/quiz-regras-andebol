@@ -5643,7 +5643,12 @@ document.addEventListener('DOMContentLoaded', function () {
     return a;
   }
 
-  function arraysIguais(a,b){ return a.length===b.length && a.sort().every((v,i)=>v==b.sort()[i]); }
+  // Compara cópias ordenadas, para não alterar o "correta" da pergunta nem a seleção
+  function arraysIguais(a,b){
+    if(a.length!==b.length) return false;
+    const x=[...a].sort((m,n)=>m-n), y=[...b].sort((m,n)=>m-n);
+    return x.every((v,i)=>v===y[i]);
+  }
 
   // --------------------
   // Eventos Botões
