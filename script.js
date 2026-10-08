@@ -5636,6 +5636,13 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.fixed-logos img').forEach(img=>img.style.display='none');
   }
 
+  // Fisher–Yates: cada ordem tem a mesma probabilidade (sort com Math.random não é uniforme)
+  function baralhar(lista){
+    const a=[...lista];
+    for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+    return a;
+  }
+
   function arraysIguais(a,b){ return a.length===b.length && a.sort().every((v,i)=>v==b.sort()[i]); }
 
   // --------------------
@@ -5645,7 +5652,7 @@ document.addEventListener('DOMContentLoaded', function () {
   randomModeBtn?.addEventListener('click', ()=> randomOptions.style.display='flex');
   startRandomQuiz?.addEventListener('click', ()=>{
     const n = parseInt(numQuestions.value,10);
-    perguntas = [...window.perguntasOriginais].sort(()=>Math.random()-0.5).slice(0,n);
+    perguntas = baralhar(window.perguntasOriginais).slice(0,n);
     iniciarQuiz();
   });
   orderedModeBtn?.addEventListener('click', ()=>{
