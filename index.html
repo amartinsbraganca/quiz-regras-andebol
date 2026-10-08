@@ -4,13 +4,6 @@
   <meta charset="UTF-8" />
   <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#2563eb">
-<script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("service-worker.js")
-      .then(() => console.log("✅ Service Worker registado"))
-      .catch(err => console.log("❌ Falha ao registar Service Worker:", err));
-  }
-</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quiz Interativo</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -132,22 +125,37 @@
         .then((reg) => {
           console.log("✅ Service Worker registado");
 
+          let aAtualizar = false;
+          function mostrarBannerAtualizacao(newWorker) {
+            if (document.getElementById("updateBanner")) return;
+            const updateBanner = document.createElement("div");
+            updateBanner.id = "updateBanner";
+            updateBanner.innerHTML = `
+              <div style="position:fixed;bottom:10px;left:50%;transform:translateX(-50%);
+                          background:#2563eb;color:white;padding:10px 20px;border-radius:8px;
+                          box-shadow:0 4px 12px rgba(0,0,0,0.2);cursor:pointer;z-index:9999;">
+                Nova versão disponível! Clique aqui para atualizar.
+              </div>`;
+            document.body.appendChild(updateBanner);
+            updateBanner.addEventListener("click", () => {
+              aAtualizar = true;
+              newWorker.postMessage({ type: "SKIP_WAITING" });
+            });
+          }
+
+          // Recarrega só depois de a nova versão assumir o controlo (e só se o utilizador pediu)
+          navigator.serviceWorker.addEventListener("controllerchange", () => {
+            if (aAtualizar) window.location.reload();
+          });
+
+          // Uma nova versão já estava à espera de uma visita anterior
+          if (reg.waiting && navigator.serviceWorker.controller) mostrarBannerAtualizacao(reg.waiting);
+
           reg.addEventListener("updatefound", () => {
             const newWorker = reg.installing;
             newWorker.addEventListener("statechange", () => {
               if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
-                const updateBanner = document.createElement("div");
-                updateBanner.innerHTML = `
-                  <div style="position:fixed;bottom:10px;left:50%;transform:translateX(-50%);
-                              background:#2563eb;color:white;padding:10px 20px;border-radius:8px;
-                              box-shadow:0 4px 12px rgba(0,0,0,0.2);cursor:pointer;z-index:9999;">
-                    Nova versão disponível! Clique aqui para atualizar.
-                  </div>`;
-                document.body.appendChild(updateBanner);
-                updateBanner.addEventListener("click", () => {
-                  newWorker.postMessage({ type: "SKIP_WAITING" });
-                  window.location.reload();
-                });
+                mostrarBannerAtualizacao(newWorker);
               }
             });
           });

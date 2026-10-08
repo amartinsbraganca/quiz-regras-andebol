@@ -1,6 +1,6 @@
 // Só é preciso mudar esta versão quando se altera a lista de ficheiros abaixo
 // ou este ficheiro. Alterações às perguntas, HTML ou CSS chegam sozinhas.
-const CACHE_NAME = "quiz-cache-v4";
+const CACHE_NAME = "quiz-cache-v5";
 
 // Caminhos relativos à localização deste ficheiro, para funcionar também numa subpasta
 const urlsToCache = [
@@ -31,7 +31,7 @@ self.addEventListener("install", (event) => {
       return cache.addAll(urlsToCache.map((url) => new Request(url, { cache: "reload" })));
     })
   );
-  self.skipWaiting(); // força o service worker a ativar imediatamente
+  // Não ativa logo: espera que o utilizador clique no aviso "Nova versão disponível!"
 });
 
 // Ativa o service worker e limpa caches antigos
