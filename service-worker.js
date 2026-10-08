@@ -1,6 +1,6 @@
 // Só é preciso mudar esta versão quando se altera a lista de ficheiros abaixo
 // ou este ficheiro. Alterações às perguntas, HTML ou CSS chegam sozinhas.
-const CACHE_NAME = "quiz-cache-v3";
+const CACHE_NAME = "quiz-cache-v4";
 
 // Caminhos relativos à localização deste ficheiro, para funcionar também numa subpasta
 const urlsToCache = [
@@ -10,7 +10,14 @@ const urlsToCache = [
   "./script.js",
   "./manifest.json",
   "./icons/icon-192.png",
-  "./icons/icon-512.png"
+  "./icons/icon-512.png",
+  "./logo_fap.png",
+  "./logo_efaa.png",
+  "./sounds/correct.mp3",
+  "./sounds/wrong.mp3",
+  // Bibliotecas externas: versões fixas, por isso nunca mudam
+  "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css",
+  "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
 ];
 
 // Ficheiros da app que podem mudar: vão sempre primeiro à rede

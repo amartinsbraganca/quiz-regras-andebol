@@ -14,7 +14,7 @@ Suggested order: **1–6**, then **8 + 10**, then **14 + 15**.
 - [x] 1. `SAR1` / `SAR2` (last 2 questions) have no `regra`, so they never appear in rules mode.
 - [x] 2. PDF export lists every question, marks unanswered ones as "Incorreto", and calculates the percentage over all questions instead of answered ones. Fix per the decision above.
 - [x] 3. Service worker is cache-first, so users keep stale questions unless `CACHE_NAME` is bumped. Switch to network-first for `index.html` / `script.js`.
-- [ ] 4. Offline cache is missing Tailwind, jsPDF, the logos and the sounds.
+- [x] 4. Offline cache is missing Tailwind, jsPDF, the logos and the sounds.
 - [ ] 5. Service worker is registered twice in `index.html` (keep the bottom block with the update banner).
 - [ ] 6. Random mode shuffle `sort(() => Math.random() - 0.5)` is biased. Use Fisher–Yates.
 - [ ] 7. `arraysIguais` sorts both arrays in place, mutating the question's `correta`.
@@ -54,7 +54,7 @@ Suggested order: **1–6**, then **8 + 10**, then **14 + 15**.
 ## 5. Assets and performance
 
 - [ ] 31. Replace the ~3 MB Tailwind 2 CDN with a small built CSS file or just `style.css`.
-- [ ] 32. Self-host the sound files (currently loaded from Google URLs).
+- [x] 32. Self-host the sound files (currently loaded from Google URLs).
 - [ ] 33. Load jsPDF only when Export is clicked.
 - [ ] 34. Compress the logos and icons.
 
