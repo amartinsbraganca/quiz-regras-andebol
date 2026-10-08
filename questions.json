@@ -1,6 +1,6 @@
 [
     {
-        "pergunta": "1.1) Quais  são as medidas  do campo  de jogo  de acordo  com as regras?",
+        "pergunta": "1.1) Quais são as medidas do campo de jogo de acordo com as regras?",
         "opcoes": [
             "a) 40 x 20 metros",
             "b) 42 x 20 metros",
@@ -33,7 +33,7 @@
         "regra": 1
     },
     {
-        "pergunta": "1.4) Quais as afirmações que estão corretas sobre a área de lançamento  de saída ?",
+        "pergunta": "1.4) Quais as afirmações que estão corretas sobre a área de lançamento de saída?",
         "opcoes": [
             "a) É constituída por um círculo com 3 metros de diâmetro.",
             "b) É constituída por um círculo com 4 metros de diâmetro.",
@@ -138,7 +138,7 @@
         "regra": 2
     },
     {
-        "pergunta": "2.8) Após o final do tempo regulamentar de jogo falta executar um livre  de 7 metros. Os árbitros aguardam o resultado imediato do lançamento. Qual dos árbitros deve, então, terminar o jogo?",
+        "pergunta": "2.8) Após o final do tempo regulamentar de jogo falta executar um livre de 7 metros. Os árbitros aguardam o resultado imediato do lançamento. Qual dos árbitros deve, então, terminar o jogo?",
         "opcoes": [
             "a) O árbitro nomeado em primeiro lugar.",
             "b) Um dos dois árbitros.",
@@ -207,7 +207,7 @@
             "a) Até ao apito para o lançamento de saída.",
             "b) Até ao apito final.",
             "c) Deve ser anulado se foi marcado após o cronometrista interromper o jogo e também se o lançamento de saída foi feito antes da interrupção ter sido notada.",
-            "d)Nunca pode ser anulado."
+            "d) Nunca pode ser anulado."
         ],
         "correta": [
             0,
@@ -545,7 +545,7 @@
         "regra": 2
     },
     {
-        "pergunta": "2.36) Qual das seguintes afirmações sobre o tempo de paragem de equipa é / são  corretas?",
+        "pergunta": "2.36) Qual das seguintes afirmações sobre o tempo de paragem de equipa é / são corretas?",
         "opcoes": [
             "a) O tempo de paragem de equipa só pode ser solicitado pelo oficial responsável da equipa",
             "b) Se um tempo de paragem de equipa é solicitado quando os adversários estão na posse da bola, o cronometrista deve devolver o cartão verde ao oficial da equipa",
@@ -586,7 +586,7 @@
         "regra": 2
     },
     {
-        "pergunta": "2.39) O guarda-redes nº. 1 da equipa BRANCA passa a bola para o jogador nº. 8 da equipa BRANCA, que está sozinho com o guarda-redes nº. 12 da equipa PRETA na área de baliza da equipa PRETA. Pouco antes da bola chegar ao jogador nº. 8 da equipa  BRANCA, há um sinal de apito do cronometrista: O oficial A da equipa BRANCA pediu um tempo de paragem de equipa nessa altura. Como deve o jogo ser recomeçado?",
+        "pergunta": "2.39) O guarda-redes nº. 1 da equipa BRANCA passa a bola para o jogador nº. 8 da equipa BRANCA, que está sozinho com o guarda-redes nº. 12 da equipa PRETA na área de baliza da equipa PRETA. Pouco antes da bola chegar ao jogador nº. 8 da equipa BRANCA, há um sinal de apito do cronometrista: O oficial A da equipa BRANCA pediu um tempo de paragem de equipa nessa altura. Como deve o jogo ser recomeçado?",
         "opcoes": [
             "a) Lançamento livre para a equipa BRANCA fora da área de baliza da equipa BRANCA",
             "b) Lançamento livre para a equipa BRANCA na área de substituição da equipa BRANCA",
@@ -887,7 +887,7 @@
         "regra": 4
     },
     {
-        "pergunta": "4.2) A equipa PRETA aparece com 5 jogadores de campo. O guarda-redes não está presente no início do jogo. A equipa PRETA nomeia o jogador de campo nº.  5 como guarda-redes. Quais são as consequências para o jogador nº. 5 da equipa PRETA?",
+        "pergunta": "4.2) A equipa PRETA aparece com 5 jogadores de campo. O guarda-redes não está presente no início do jogo. A equipa PRETA nomeia o jogador de campo nº. 5 como guarda-redes. Quais são as consequências para o jogador nº. 5 da equipa PRETA?",
         "opcoes": [
             "a) O jogador nº. 5 da equipa PRETA pode ser usado como um jogador de campo a qualquer momento, quando fizer uma substituição correta.",
             "b) O jogador nº. 5 da equipa PRETA já não pode ser usado como um jogador de campo",
@@ -963,7 +963,7 @@
         "regra": 4
     },
     {
-        "pergunta": "4.8) O jogador nº. 14 da equipa PRETA faz uma substituição correta, enquanto o jogo está interrompido. No entanto, um apito vem da mesa do cronometrista. O jogador nº. 14 da equipa PRETA não foi corretamente inscrito no boletim de jogo. Verifica-se que este jogador foi registado com o nº.  18 no boletim de jogo. Qual a decisão correta?",
+        "pergunta": "4.8) O jogador nº. 14 da equipa PRETA faz uma substituição correta, enquanto o jogo está interrompido. No entanto, um apito vem da mesa do cronometrista. O jogador nº. 14 da equipa PRETA não foi corretamente inscrito no boletim de jogo. Verifica-se que este jogador foi registado com o nº. 18 no boletim de jogo. Qual a decisão correta?",
         "opcoes": [
             "a) Sanção progressiva para o oficial responsável da equipa PRETA.",
             "b) Lançamento livre para a equipa BRANCA na zona da mesa do cronometrista.",
@@ -1057,7 +1057,7 @@
     {
         "pergunta": "4.15) O Jogador nº. 3 da equipa PRETA comete a primeira substituição irregular para a sua equipa durante uma interrupção de jogo. A interrupção foi causada por uma decisão de lançamento livre a favor da equipa PRETA. O jogador nº. 3 da equipa PRETA não foi advertido nem suspenso ainda no jogo. Qual a decisão correta?",
         "opcoes": [
-            "a) Advertência ao jogador nº.  3 da equipa PRETA.",
+            "a) Advertência ao jogador nº. 3 da equipa PRETA.",
             "b) Exclusão de 2 minutos para o jogador nº. 3 da equipa PRETA.",
             "c) Lançamento livre para a equipa BRANCA.",
             "d) Lançamento livre para a equipa PRETA."
@@ -1123,10 +1123,10 @@
         "regra": 4
     },
     {
-        "pergunta": "4.20) O guarda-redes nº.  3 da equipa BRANCA quer marcar um livre de 7 metros. Para proteger a baliza vazia, o jogador nº.  15 da equipa BRANCA entra em campo com um equipamento de guarda-redes e substitui um jogador de campo. Qual a decisão correta?",
+        "pergunta": "4.20) O guarda-redes nº. 3 da equipa BRANCA quer marcar um livre de 7 metros. Para proteger a baliza vazia, o jogador nº. 15 da equipa BRANCA entra em campo com um equipamento de guarda-redes e substitui um jogador de campo. Qual a decisão correta?",
         "opcoes": [
-            "a) Exclusão de 2 minutos para o guarda-redes nº.  3 da equipa BRANCA.",
-            "b) Exclusão de 2 minutos para o jogador nº.  15 da equipa BRANCA.",
+            "a) Exclusão de 2 minutos para o guarda-redes nº. 3 da equipa BRANCA.",
+            "b) Exclusão de 2 minutos para o jogador nº. 15 da equipa BRANCA.",
             "c) Nenhuma sanção.",
             "d) Livre de 7 metros para a equipa BRANCA.",
             "e) Lançamento livre para a equipa PRETA na zona de substituições de equipa BRANCA."
@@ -1165,7 +1165,7 @@
         "regra": 4
     },
     {
-        "pergunta": "4.23) 30 segundos antes do seu tempo de exclusão acabar, o jogador nº.  3 da equipa BRANCA entra no campo, porém sem interferir no jogo. A equipa BRANCA está na posse da bola. Qual a decisão correta?",
+        "pergunta": "4.23) 30 segundos antes do seu tempo de exclusão acabar, o jogador nº. 3 da equipa BRANCA entra no campo, porém sem interferir no jogo. A equipa BRANCA está na posse da bola. Qual a decisão correta?",
         "opcoes": [
             "a) Lançamento livre para a equipa PRETA.",
             "b) Lançamento livre para a equipa BRANCA.",
@@ -1436,7 +1436,7 @@
         "regra": 4
     },
     {
-        "pergunta": "4.43) Depois de receber assistência médica no campo, o jogador nº. . 7 da equipa BRANCA está sentado no banco na zona de substituições. Durante o primeiro ataque da equipa BRANCA, o jogador nº. 2 da equipa PRETA intercepta a bola e corre em contra-ataque sozinho, ficando isolado com o guarda-redes nº. 12 da equipa BRANCA. Antes do jogador nº. 2 da equipa PRETA rematar, o jogador nº. 7 da equipa BRANCA entra em campo numa substituição com o jogador nº. 9 da equipa BRANCA. Qual a decisão correta?",
+        "pergunta": "4.43) Depois de receber assistência médica no campo, o jogador nº. 7 da equipa BRANCA está sentado no banco na zona de substituições. Durante o primeiro ataque da equipa BRANCA, o jogador nº. 2 da equipa PRETA intercepta a bola e corre em contra-ataque sozinho, ficando isolado com o guarda-redes nº. 12 da equipa BRANCA. Antes do jogador nº. 2 da equipa PRETA rematar, o jogador nº. 7 da equipa BRANCA entra em campo numa substituição com o jogador nº. 9 da equipa BRANCA. Qual a decisão correta?",
         "opcoes": [
             "a) O cronometrista espera até que o jogador nº. 2 da equipa PRETA remate, antes de interromper o jogo, devido a uma substituição irregular da equipa BRANCA.",
             "b) O cronometrista interrompe o jogo imediatamente por causa de uma substituição irregular da equipa BRANCA.",
@@ -1552,7 +1552,7 @@
         "regra": 4
     },
     {
-        "pergunta": "4.51) O jogador nº. 4 da equipa BRANCA, está a receber assistência médica no campo. Depois de receber o tratamento, o jogador nº. 4 da equipa BRANCA tem que deixar o campo e só pode voltar a entrar após o terceiro ataque da sua equipa. Após o segundo ataque da equipa BRANCA, o oficial A da equipa BRANCA, pede ao jogador nº. 4 da equipa BRANCA para entrar no campo para resolver uma situação na defesa. O Jogador nº. 4 da equipa BRANCA entra no campo através  de uma substituição com o jogador nº. 6 da equipa BRANCA para jogar apenas na defesa. Qual a decisão correta?",
+        "pergunta": "4.51) O jogador nº. 4 da equipa BRANCA, está a receber assistência médica no campo. Depois de receber o tratamento, o jogador nº. 4 da equipa BRANCA tem que deixar o campo e só pode voltar a entrar após o terceiro ataque da sua equipa. Após o segundo ataque da equipa BRANCA, o oficial A da equipa BRANCA, pede ao jogador nº. 4 da equipa BRANCA para entrar no campo para resolver uma situação na defesa. O Jogador nº. 4 da equipa BRANCA entra no campo através de uma substituição com o jogador nº. 6 da equipa BRANCA para jogar apenas na defesa. Qual a decisão correta?",
         "opcoes": [
             "a) Deixar jogar – O jogador nº. 4 da equipa BRANCA pode jogar na defesa.",
             "b) Advertência para o jogador nº. 4 da equipa BRANCA, porque ele entrou no campo demasiado cedo.",
@@ -1639,12 +1639,12 @@
         "regra": 4
     },
     {
-        "pergunta": "4.59) A equipa BRANCA está na posse da bola quando o cronometrista interrompe a partida. O cronometrista diz aos árbitros que o jogador nº.  11 da equipa BRANCA entrou em campo e não está na ficha de jogo. Acontece que o oficial A, erradamente, incluiu o jogador na ficha de jogo com o número 13. Qual é a decisão correta?",
+        "pergunta": "4.59) A equipa BRANCA está na posse da bola quando o cronometrista interrompe a partida. O cronometrista diz aos árbitros que o jogador nº. 11 da equipa BRANCA entrou em campo e não está na ficha de jogo. Acontece que o oficial A, erradamente, incluiu o jogador na ficha de jogo com o número 13. Qual é a decisão correta?",
         "opcoes": [
             "a) Lançamento livre para a equipa BRANCA.",
             "b) Lançamento livre para a equipa PRETA.",
             "c) O jogador nº. 11 da equipa BRANCA não está autorizado a participar no jogo.",
-            "d) O erro é corrigido e o jogador nº.  11 da equipa BRANCA tem o direito de participar.",
+            "d) O erro é corrigido e o jogador nº. 11 da equipa BRANCA tem o direito de participar.",
             "e) Nota no relatório do jogo.",
             "f) Sanção progressiva para oficial A da equipa BRANCA."
         ],
@@ -1711,7 +1711,7 @@
     {
         "pergunta": "5.3) O guarda-redes nº. 12 da equipa BRANCA defende um remate e mergulha em direção à bola, que sai a rolar na direção da área de jogo. O guarda-redes nº. 12 da equipa BRANCA, agarra a bola enquanto desliza e atravessa a linha de área de baliza, e passa a bola na área de jogo para um companheiro de equipa. Qual a decisão correta?",
         "opcoes": [
-            "a) Lançamento livre para a equipa PRETA .",
+            "a) Lançamento livre para a equipa PRETA.",
             "b) O jogo continua sem interrupção.",
             "c) Lançamento de baliza para a equipa BRANCA após o sinal de apito."
         ],
@@ -2010,7 +2010,7 @@
         "pergunta": "6.16) O guarda-redes nº. 12 da equipa BRANCA defende um remate e tem a bola sob controlo na sua área de baliza. Ele ainda tem a bola nas mãos quando o cronometrista apita para uma substituição irregular do jogador nº. 10 da equipa BRANCA. Qual a decisão correta?",
         "opcoes": [
             "a) Lançamento livre para a equipa PRETA na área de substituição da equipa BRANCA.",
-            "b)Time-out.",
+            "b) Time-out.",
             "c) Lançamento de baliza para a equipa BRANCA.",
             "d) Exclusão de 2 minutos para o jogador nº. 10 da equipa BRANCA.",
             "e) Lançamento livre para a equipa PRETA na linha de lançamento livre da equipa BRANCA."
@@ -2126,7 +2126,7 @@
         "regra": 7
     },
     {
-        "pergunta": "7.2) Passe arriscado do jogador nº. 3 da equipa PRETA para o jogador nº. 11 da equipa PRETA. Quando a bola está no ar, o jogador nº. 11 da equipa PRETA percebe que não será capaz de agarrar a bola e então bate na bola com o punho para servir o jogador nº. 9 da equipa PRETA, que está parado no meio do campo.  Qual a decisão correta?",
+        "pergunta": "7.2) Passe arriscado do jogador nº. 3 da equipa PRETA para o jogador nº. 11 da equipa PRETA. Quando a bola está no ar, o jogador nº. 11 da equipa PRETA percebe que não será capaz de agarrar a bola e então bate na bola com o punho para servir o jogador nº. 9 da equipa PRETA, que está parado no meio do campo. Qual a decisão correta?",
         "opcoes": [
             "a) O jogo continua sem interrupção.",
             "b) Lançamento livre para a equipa BRANCA da posição do jogador nº. 9 da equipa PRETA.",
@@ -2493,7 +2493,7 @@
         "regra": 7
     },
     {
-        "pergunta": "7.34) A equipa PRETA está no ataque. Os árbitros mostram o sinal de advertência de jogo passivo. O jogador nº. 7 da equipa PRETA passa a bola para o jogador nº. 11 da equipa PRETA. O jogador nº. 11 da equipa PRETA tenta romper a defesa, mas é parado pelo jogador nº. 3 da equipa BRANCA.  Os árbitros assinalam um lançamento livre para a equipa PRETA. O jogador nº. 11 da equipa PRETA executa o lançamento livre e passa a bola para o jogador nº. 2 da equipa PRETA, que tenta rematar à baliza, mas o remate é bloqueado pelo jogador nº. 4 da equipa BRANCA, e a bola vai para o jogador nº. 11 da equipa PRETA.  O jogador nº. 11 da equipa PRETA remata à baliza, mas é empurrado levemente pelo jogador nº. 5 da equipa BRANCA e o guarda-redes nº. 1 da equipa BRANCA consegue defender o remate. Qual é a decisão correta?",
+        "pergunta": "7.34) A equipa PRETA está no ataque. Os árbitros mostram o sinal de advertência de jogo passivo. O jogador nº. 7 da equipa PRETA passa a bola para o jogador nº. 11 da equipa PRETA. O jogador nº. 11 da equipa PRETA tenta romper a defesa, mas é parado pelo jogador nº. 3 da equipa BRANCA. Os árbitros assinalam um lançamento livre para a equipa PRETA. O jogador nº. 11 da equipa PRETA executa o lançamento livre e passa a bola para o jogador nº. 2 da equipa PRETA, que tenta rematar à baliza, mas o remate é bloqueado pelo jogador nº. 4 da equipa BRANCA, e a bola vai para o jogador nº. 11 da equipa PRETA. O jogador nº. 11 da equipa PRETA remata à baliza, mas é empurrado levemente pelo jogador nº. 5 da equipa BRANCA e o guarda-redes nº. 1 da equipa BRANCA consegue defender o remate. Qual é a decisão correta?",
         "opcoes": [
             "a) Lançamento livre para a equipa PRETA; novo ataque, porque a equipa PRETA consegue ficar com a posse da bola depois de um remate à baliza.",
             "b) Lançamento livre para a equipa PRETA; sinal de advertência de jogo passivo, a equipa PRETA usou dois passes.",
@@ -2504,7 +2504,7 @@
         "regra": 7
     },
     {
-        "pergunta": "7.35) Com apenas 20 segundos para o fim do jogo, o resultado está em 27-27. A equipa BRANCA está a jogar sem guarda-redes. O sinal de jogo passivo é mostrado pelos árbitros. Após 3 passes, o jogador nº. 8 da equipa BRANCA passa a bola ao jogador n.º 7 da sua equipa, o qual remata à baliza. O remate é bloqueado pelo jogador defensor nº.  2 da equipa PRETA, e a bola sai pela linha lateral. Logo após a execução da reposição de bola em jogo, soa o apito da mesa devido à equipa BRANCA ter solicitado um time-out de equipa. Como se deve reiniciar o jogo?",
+        "pergunta": "7.35) Com apenas 20 segundos para o fim do jogo, o resultado está em 27-27. A equipa BRANCA está a jogar sem guarda-redes. O sinal de jogo passivo é mostrado pelos árbitros. Após 3 passes, o jogador nº. 8 da equipa BRANCA passa a bola ao jogador n.º 7 da sua equipa, o qual remata à baliza. O remate é bloqueado pelo jogador defensor nº. 2 da equipa PRETA, e a bola sai pela linha lateral. Logo após a execução da reposição de bola em jogo, soa o apito da mesa devido à equipa BRANCA ter solicitado um time-out de equipa. Como se deve reiniciar o jogo?",
         "opcoes": [
             "a) Lançamento livre para a equipa BRANCA.",
             "b) Reposição em jogo para a equipa BRANCA.",
@@ -3436,7 +3436,7 @@
         "regra": 8
     },
     {
-        "pergunta": "8.63) O marcador está 28 26 para a equipa BRANCA. Com 25 segundos restantes no jogo, a equipa PRETA marca um golo. O guarda-redes nº. 12 da equipa BRANCA chuta a bola de propósito, para as bancadas. É claro que ele chuta a bola com a intenção de atrasar o jogo, para que o lançamento de saída não possa ser executado imediatamente.  Qual é a decisão correta?",
+        "pergunta": "8.63) O marcador está 28 26 para a equipa BRANCA. Com 25 segundos restantes no jogo, a equipa PRETA marca um golo. O guarda-redes nº. 12 da equipa BRANCA chuta a bola de propósito, para as bancadas. É claro que ele chuta a bola com a intenção de atrasar o jogo, para que o lançamento de saída não possa ser executado imediatamente. Qual é a decisão correta?",
         "opcoes": [
             "a) Time-out",
             "b) Lançamento de saída para a equipa BRANCA.",
@@ -3649,7 +3649,7 @@
         "regra": 8
     },
     {
-        "pergunta": "8.76) O jogador nº. . 8 da equipa PRETA ultrapassa a defesa da equipa BRANCA e não tem jogadores entre ele e o guarda-redes BRANCO 1. Quando ele está prestes a rematar à baliza, ele é empurrado de lado por BRANCO 7. Mesmo perdendo parcialmente o controlo do corpo, ele é capaz de rematar com força à baliza. A bola atinge a cabeça do guarda-redes BRANCO 1, muda de direção e entra na baliza. Qual a decisão correta?",
+        "pergunta": "8.76) O jogador nº. 8 da equipa PRETA ultrapassa a defesa da equipa BRANCA e não tem jogadores entre ele e o guarda-redes BRANCO 1. Quando ele está prestes a rematar à baliza, ele é empurrado de lado por BRANCO 7. Mesmo perdendo parcialmente o controlo do corpo, ele é capaz de rematar com força à baliza. A bola atinge a cabeça do guarda-redes BRANCO 1, muda de direção e entra na baliza. Qual a decisão correta?",
         "opcoes": [
             "a) Golo para a equipa PRETA",
             "b) Lance livre para a equipa BRANCA",
@@ -3729,7 +3729,7 @@
         "regra": 9
     },
     {
-        "pergunta": "9.2) Um remate do jogador nº. 5 da equipa BRANCA, bate no poste da baliza da equipa PRETA. A bola ressalta e bate no pé do jogador nº. 3 da equipa PRETA que está na área de jogo, e entra na baliza da equipa PRETA. Qual a decisão correta? ",
+        "pergunta": "9.2) Um remate do jogador nº. 5 da equipa BRANCA, bate no poste da baliza da equipa PRETA. A bola ressalta e bate no pé do jogador nº. 3 da equipa PRETA que está na área de jogo, e entra na baliza da equipa PRETA. Qual a decisão correta?",
         "opcoes": [
             "a) Lançamento livre para a equipa BRANCA.",
             "b) Golo para a equipa BRANCA.",
@@ -3981,9 +3981,9 @@
             "c) Lançamento livre para a equipa PRETA.",
             "d) Livre de 7 metros para a equipa PRETA.",
             "e) Time-out.",
-            "f) Sanção progressiva para o jogador nº. . 8 da equipa BRANCA.",
-            "g) Exclusão direta de 2 minutos para o jogador nº. . 8 da equipa BRANCA.",
-            "h) Desqualificação para o jogador nº. . 8 da equipa BRANCA (cartão vermelho mostrado pelos árbitros)"
+            "f) Sanção progressiva para o jogador nº. 8 da equipa BRANCA.",
+            "g) Exclusão direta de 2 minutos para o jogador nº. 8 da equipa BRANCA.",
+            "h) Desqualificação para o jogador nº. 8 da equipa BRANCA (cartão vermelho mostrado pelos árbitros)"
         ],
         "correta": [
             3,
@@ -4876,7 +4876,7 @@
         "regra": 15
     },
     {
-        "pergunta": "15.14) Pouco antes do final do jogo o marcador é 24-23 a favor da equipa BRANCA. Um lançamento livre é concedido para a equipa BRANCA, a cerca de 1 metro da linha de lançamento livre da equipa PRETA. Todos os jogadores tomam uma posição correta e o árbitro apita para a execução do lançamento livre. O jogador nº. 10 da equipa BRANCA, que está a executar o lançamento livre, dá um passo, antes da bola deixar a sua mão.  Qual a decisão correta?",
+        "pergunta": "15.14) Pouco antes do final do jogo o marcador é 24-23 a favor da equipa BRANCA. Um lançamento livre é concedido para a equipa BRANCA, a cerca de 1 metro da linha de lançamento livre da equipa PRETA. Todos os jogadores tomam uma posição correta e o árbitro apita para a execução do lançamento livre. O jogador nº. 10 da equipa BRANCA, que está a executar o lançamento livre, dá um passo, antes da bola deixar a sua mão. Qual a decisão correta?",
         "opcoes": [
             "a) Lançamento livre para a equipa BRANCA",
             "b) Time-out",
@@ -4887,7 +4887,7 @@
         "regra": 15
     },
     {
-        "pergunta": "15.15) O jogador nº. 14 da equipa BRANCA quer executar um lançamento livre sem o  sinal de apito na linha de lançamento livre da equipa PRETA. Ele e os seus companheiros de equipa, estão em posição correta. Antes da bola deixar a mão do jogador nº. 14 da equipa BRANCA, o jogador nº. 13 da equipa BRANCA e o jogador nº. 15 da equipa BRANCA, correm transpondo a linha de lance livre em direção à linha da área de baliza. Qual a decisão correta?",
+        "pergunta": "15.15) O jogador nº. 14 da equipa BRANCA quer executar um lançamento livre sem o sinal de apito na linha de lançamento livre da equipa PRETA. Ele e os seus companheiros de equipa, estão em posição correta. Antes da bola deixar a mão do jogador nº. 14 da equipa BRANCA, o jogador nº. 13 da equipa BRANCA e o jogador nº. 15 da equipa BRANCA, correm transpondo a linha de lance livre em direção à linha da área de baliza. Qual a decisão correta?",
         "opcoes": [
             "a) Correção.",
             "b) Lançamento livre para a equipa BRANCA após o sinal de apito.",
@@ -5049,7 +5049,7 @@
         "opcoes": [
             "a) Nenhum",
             "b) 1",
-            "c)  2",
+            "c) 2",
             "d) 3"
         ],
         "correta": 1,

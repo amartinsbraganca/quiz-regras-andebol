@@ -1,6 +1,6 @@
 // Só é preciso mudar esta versão quando se altera a lista de ficheiros abaixo
 // ou este ficheiro. Alterações às perguntas, HTML ou CSS chegam sozinhas.
-const CACHE_NAME = "quiz-cache-v6";
+const CACHE_NAME = "quiz-cache-v7";
 
 // Caminhos relativos à localização deste ficheiro, para funcionar também numa subpasta
 const urlsToCache = [
@@ -28,9 +28,16 @@ const networkFirst = ["./", "./index.html", "./style.css", "./script.js", "./que
 // Instala e guarda em cache
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache.map((url) => new Request(url, { cache: "reload" })));
-    })
+    (async () => {
+      // Não instala uma versão nova com perguntas estragadas: fica a anterior.
+      // Verifica antes de mexer na cache, para não estragar a cópia boa.
+      const questions = await fetch("./questions.json", { cache: "reload" });
+      if (!questions.ok || !(await isValidQuestions(questions))) {
+        throw new Error("questions.json inválido; instalação cancelada.");
+      }
+      const cache = await caches.open(CACHE_NAME);
+      await cache.addAll(urlsToCache.map((url) => new Request(url, { cache: "reload" })));
+    })()
   );
   // Não ativa logo: espera que o utilizador clique no aviso "Nova versão disponível!"
 });
@@ -48,19 +55,35 @@ self.addEventListener("activate", (event) => {
   self.clients.claim(); // garante que o novo SW controla imediatamente
 });
 
-// Rede primeiro: tenta a versão mais recente e guarda-a; sem rede usa a cache
+const questionsPath = new URL("./questions.json", self.location).pathname;
+
+// Verificação rápida de que questions.json é utilizável (a verificação completa
+// é feita antes de publicar, por scripts/validate-questions.js)
+function isValidQuestions(response) {
+  return response.json()
+    .then((data) => Array.isArray(data) && data.length > 0 &&
+      data.every((p) => p && typeof p.pergunta === "string" && Array.isArray(p.opcoes)))
+    .catch(() => false);
+}
+
+// Rede primeiro: tenta a versão mais recente e guarda-a; sem rede usa a cache.
+// Se for publicado um questions.json estragado, continua a usar a última versão boa.
 function fromNetworkFirst(request) {
+  const fromCache = () =>
+    caches.match(request, { ignoreSearch: true }).then((response) => response || Promise.reject());
+
   return fetch(request, { cache: "no-cache" })
-    .then((response) => {
-      if (response.ok) {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+    .then(async (response) => {
+      if (!response.ok) return fromCache().catch(() => response);
+      if (new URL(request.url).pathname === questionsPath && !(await isValidQuestions(response.clone()))) {
+        console.warn("questions.json inválido na rede; a usar a última versão guardada.");
+        return fromCache().catch(() => response);
       }
+      const copy = response.clone();
+      caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
       return response;
     })
-    .catch(() =>
-      caches.match(request, { ignoreSearch: true }).then((response) => response || Promise.reject())
-    );
+    .catch(fromCache);
 }
 
 // Cache primeiro: para imagens e outros ficheiros que raramente mudam
