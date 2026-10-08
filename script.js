@@ -5572,6 +5572,7 @@ let perguntas = [
 let indiceAtual = 0;
 let acertos = 0;
 let resultados = [];
+let respostasSelecionadas = [];
 let podeAvancar = false; 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -5680,7 +5681,8 @@ document.addEventListener('DOMContentLoaded', function () {
     appContainer.style.display='none';
     startPage.style.display='flex';
     modeSelection.style.display='none';
-    indiceAtual=0; acertos=0; resultados=[]; atualizarScore();
+    indiceAtual=0; acertos=0; resultados=[]; respostasSelecionadas=[]; atualizarScore();
+    exportBtn.classList.add('hidden');
     backConfirmModal.classList.add('hidden');
   });
 
@@ -5692,7 +5694,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Funções Quiz
   // --------------------
   function iniciarQuiz(){
-    indiceAtual=0; acertos=0; resultados=[];
+    indiceAtual=0; acertos=0; resultados=[]; respostasSelecionadas=[];
+    exportBtn.classList.add('hidden');
     modeSelection.style.display='none'; appContainer.style.display='block';
     ocultarLogos(); renderPergunta();
   }
@@ -5750,12 +5753,12 @@ document.addEventListener('DOMContentLoaded', function () {
         input.disabled=true;
       });
 
-      resultados[indiceAtual]=corretaResposta; atualizarScore();
+      resultados[indiceAtual]=corretaResposta; respostasSelecionadas[indiceAtual]=selecionados; atualizarScore();
       podeAvancar=true; nextBtn.textContent="Próxima";
     }else{
       podeAvancar=false;
       if(indiceAtual<perguntas.length-1){ indiceAtual++; renderPergunta(); }
-      else{ quizContainer.innerHTML=`<h2 class="text-xl font-bold mb-4">Quiz terminado!</h2><p>Acertos: ${acertos} em ${perguntas.length} perguntas.</p>`; nextBtn.disabled=true; }
+      else{ quizContainer.innerHTML=`<h2 class="text-xl font-bold mb-4">Quiz terminado!</h2><p>Acertos: ${acertos} em ${perguntas.length} perguntas.</p>`; nextBtn.disabled=true; exportBtn.classList.remove('hidden'); }
     }
   }
   // --- Exportar PDF ---
@@ -5767,7 +5770,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let y = margin;
     const lineHeight = 6;
     const totalPerguntas = perguntas.length;
-    const percentAcerto = totalPerguntas > 0 ? Math.round((acertos / totalPerguntas) * 100) : 0;
+    const totalRespondidas = resultados.length;
+    const percentAcerto = totalRespondidas > 0 ? Math.round((acertos / totalRespondidas) * 100) : 0;
 
     doc.setFontSize(20);
     doc.setFont(undefined, 'bold');
@@ -5778,7 +5782,7 @@ document.addEventListener('DOMContentLoaded', function () {
     doc.setFontSize(12);
     doc.setFont(undefined, 'normal');
     doc.setTextColor(50);
-    doc.text(`Perguntas respondidas: ${resultados.length} / ${totalPerguntas}`, margin, y);
+    doc.text(`Perguntas respondidas: ${totalRespondidas} / ${totalPerguntas}`, margin, y);
     y += lineHeight;
     doc.text(`Acertos: ${acertos}`, margin, y);
     y += lineHeight;
@@ -5787,25 +5791,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
     perguntas.forEach((p,i) => {
       const blocoPadding = 4;
+      const espacoEntreBlocos = 4;
       const blocoWidth = maxWidth;
       const blocoColor = i%2===0?[245,245,245]:[220,235,245];
 
+      doc.setFont(undefined,'bold');
       const perguntaLinhas = doc.splitTextToSize(`${i+1}. ${p.pergunta}`, blocoWidth - 2*blocoPadding);
+      doc.setFont(undefined,'normal');
+      const selecionados = respostasSelecionadas[i] || [];
       const opLinhasArray = p.opcoes.map((op, idx)=>{
         const isCorreta = Array.isArray(p.correta)?p.correta.includes(idx):p.correta===idx;
-        return { linhas: doc.splitTextToSize(`${String.fromCharCode(97+idx)}) ${op}`, blocoWidth - 2*blocoPadding), isCorreta };
+        const isSelecionada = selecionados.includes(idx);
+        const texto = isSelecionada ? `${op}  (a tua resposta)` : op;
+        return { linhas: doc.splitTextToSize(texto, blocoWidth - 2*blocoPadding), isCorreta, isSelecionada };
       });
 
-      let blocoAltura = perguntaLinhas.length*lineHeight + lineHeight;
-      opLinhasArray.forEach(opItem=>blocoAltura+=opItem.linhas.length*lineHeight);
-      blocoAltura += lineHeight + 2*blocoPadding;
+      // y é a linha de base do texto; o bloco começa uma linha acima da primeira
+      // linha e termina blocoPadding abaixo da linha "Correto/Incorreto".
+      let linhasTotal = perguntaLinhas.length;
+      opLinhasArray.forEach(opItem=>linhasTotal+=opItem.linhas.length);
+      const blocoAltura = linhasTotal*lineHeight + 4 + lineHeight + blocoPadding;
 
-      if(y+blocoAltura>297-margin){doc.addPage();y=margin;}
+      let topo = y - lineHeight;
+      if(topo+blocoAltura>297-margin){doc.addPage();topo=margin;y=margin+lineHeight;}
       doc.setFillColor(...blocoColor);
-      doc.roundedRect(margin, y-blocoPadding, blocoWidth, blocoAltura,3,3,'F');
+      doc.roundedRect(margin, topo, blocoWidth, blocoAltura,3,3,'F');
       doc.setDrawColor(30,60,120);
       doc.setLineWidth(0.7);
-      doc.roundedRect(margin, y-blocoPadding, blocoWidth, blocoAltura,3,3,'S');
+      doc.roundedRect(margin, topo, blocoWidth, blocoAltura,3,3,'S');
 
       doc.setFont(undefined,'bold'); doc.setTextColor(30,60,120);
       perguntaLinhas.forEach(line=>{doc.text(line, margin+blocoPadding, y); y+=lineHeight;});
@@ -5813,7 +5826,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       doc.setFont(undefined,'normal');
       opLinhasArray.forEach(opItem=>{
-        doc.setTextColor(opItem.isCorreta?"green":50);
+        doc.setTextColor(opItem.isCorreta?"green":opItem.isSelecionada?"red":50);
         opItem.linhas.forEach(line=>{doc.text(line, margin+blocoPadding, y); y+=lineHeight;});
       });
 
@@ -5821,9 +5834,11 @@ document.addEventListener('DOMContentLoaded', function () {
       const userResp = resultados[i]!==undefined?resultados[i]:false;
       doc.setFont(undefined,'bold'); doc.setTextColor(userResp?"green":"red");
       doc.text(userResp?"Correto":"Incorreto", margin+blocoPadding, y);
-      y+=lineHeight+blocoPadding;
+      y = topo + blocoAltura + espacoEntreBlocos + lineHeight;
     });
 
-    doc.save("resultados_quiz_profissional_final.pdf");
+    const hoje = new Date();
+    const data = `${hoje.getFullYear()}-${String(hoje.getMonth()+1).padStart(2,'0')}-${String(hoje.getDate()).padStart(2,'0')}`;
+    doc.save(`resultados_quiz_${data}.pdf`);
   });
 });
