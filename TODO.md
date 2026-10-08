@@ -60,6 +60,6 @@ Suggested order: **1–6**, then **8 + 10**, then **14 + 15**.
 
 ## 6. Project hygiene
 
-- [ ] 35. README: what the app is, running locally (`python3 -m http.server`), adding questions, releasing (cache version bump).
+- [ ] 35. (Started: README.md exists, keep it updated.) README: what the app is, running locally (`python3 -m http.server`), adding questions, releasing (cache version bump).
 - [ ] 36. Automatic deploy (e.g. GitHub Pages) with an automatic cache version.
 - [ ] 37. Clearer commit messages and short-lived branches.
