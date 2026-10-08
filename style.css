@@ -40,6 +40,7 @@ body {
   transition: background 0.3s ease;
 }
 .btn-start:hover { background: #1d4ed8; }
+.btn-start:disabled { opacity: 0.6; cursor: wait; }
 
 /* =========================
    Mode Selection

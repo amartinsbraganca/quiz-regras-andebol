@@ -1,6 +1,6 @@
 // Só é preciso mudar esta versão quando se altera a lista de ficheiros abaixo
 // ou este ficheiro. Alterações às perguntas, HTML ou CSS chegam sozinhas.
-const CACHE_NAME = "quiz-cache-v5";
+const CACHE_NAME = "quiz-cache-v6";
 
 // Caminhos relativos à localização deste ficheiro, para funcionar também numa subpasta
 const urlsToCache = [
@@ -8,6 +8,7 @@ const urlsToCache = [
   "./index.html",
   "./style.css",
   "./script.js",
+  "./questions.json",
   "./manifest.json",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
@@ -21,7 +22,7 @@ const urlsToCache = [
 ];
 
 // Ficheiros da app que podem mudar: vão sempre primeiro à rede
-const networkFirst = ["./", "./index.html", "./style.css", "./script.js", "./manifest.json"]
+const networkFirst = ["./", "./index.html", "./style.css", "./script.js", "./questions.json", "./manifest.json"]
   .map((path) => new URL(path, self.location).pathname);
 
 // Instala e guarda em cache

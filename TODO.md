@@ -21,7 +21,7 @@ Suggested order: **1–6**, then **8 + 10**, then **14 + 15**.
 
 ## 2. Code and data structure
 
-- [ ] 8. Move the questions out of `script.js` into `questions.json` (or one file per rule).
+- [x] 8. Move the questions out of `script.js` into `questions.json` (or one file per rule).
 - [ ] 9. Delete the stale `perguntas_andebol_completas_corrigido.txt` (not used by the app).
 - [ ] 10. Add a data validation script / GitHub Action: `regra` present, `correta` in range, numbering unique.
 - [ ] 11. Generate the rules list from the data instead of hardcoding "Regra 1…18"; show question counts.
