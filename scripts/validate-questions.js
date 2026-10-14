@@ -7,7 +7,7 @@ const fs = require("fs");
 const path = require("path");
 
 const FICHEIRO = process.argv[2] || path.join(__dirname, "..", "questions.json");
-const CAMPOS_CONHECIDOS = ["pergunta", "opcoes", "correta", "regra", "explicacao"];
+const CAMPOS_CONHECIDOS = ["pergunta", "opcoes", "correta", "regra", "referencia"];
 const NUMERO = /^(\d+)\.(\d+)\)|^(SAR)(\d+)\)/;
 const emActions = !!process.env.GITHUB_ACTIONS;
 
@@ -93,8 +93,12 @@ if (perguntas) {
       }
     }
 
-    if (p.explicacao !== undefined && (typeof p.explicacao !== "string" || !p.explicacao.trim())) {
-      erro('"explicacao", quando existe, tem de ser um texto.');
+    if (p.referencia !== undefined) {
+      if (typeof p.referencia !== "string" || !p.referencia.trim()) {
+        erro('"referencia", quando existe, tem de ser um texto, ex. "8:5".');
+      } else if (/^\s*(regra|sar)\b/i.test(p.referencia)) {
+        aviso(`"referencia" não precisa de "Regra"/"SAR" no início, a app já o mostra: "${p.referencia}".`);
+      }
     }
 
     // --- Numeração ---

@@ -7,6 +7,7 @@ Suggested order: **1–6**, then **8 + 10**, then **14 + 15**.
 ## Decisions
 
 - **PDF export (#2):** exporting must not be possible on an incomplete quiz. Hide "Exportar Resultados" during the quiz, show it only on the "Quiz terminado!" screen, and hide it again on back / new quiz. Also show the options the user selected in the PDF.
+- **Explanations (#14):** no written explanations. The rulebook is self-explanatory, so each question only points to its rule/clause. Clause references (`referencia`) are filled in gradually by referees, not generated.
 - **SAR questions (#1):** "SAR" = Substitution Area Regulations (Regulamento da Zona de Substituição). Decided: `"regra": "SAR"` plus a "SAR - Zona de Substituições" button after Regra 18 (not folded into Rule 4). New SAR questions just need `"regra": "SAR"`.
 
 ## 1. Bugs
@@ -30,7 +31,7 @@ Suggested order: **1–6**, then **8 + 10**, then **14 + 15**.
 
 ## 3. Learning features
 
-- [ ] 14. Optional `explicacao` field shown after answering (with the rule reference).
+- [x] 14. Show the rule reference after answering (and in the PDF): "Regra 8" from `regra`, or "Regra 8:5" when the optional `referencia` field is filled in.
 - [ ] 15. End-of-quiz review of wrong answers, with retry.
 - [ ] 16. Save stats in `localStorage` (accuracy per rule, most-missed questions).
 - [ ] 17. "Practise weak spots" mode.

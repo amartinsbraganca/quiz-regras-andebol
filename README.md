@@ -41,13 +41,15 @@ Then open <http://localhost:8000>. In Codespaces, open the forwarded port 8000 i
            "b) Segunda opção"
        ],
        "correta": 0,
-       "regra": 8
+       "regra": 8,
+       "referencia": "8:5"
    }
    ```
 
    - `pergunta` starts with the question number. Its first part must match `regra` (`8.80)` goes with `"regra": 8`).
    - `opcoes` are written `a) `, `b) `, `c) `… in order.
    - `correta` counts from 0: `a)` = 0, `b)` = 1, and so on. If several answers are correct, use a list: `[1, 4]`.
+   - `referencia` (optional) is the exact clause, written without "Regra": `"8:5"`, `"8:5, 8:6"` or `"8:5 e Diretriz 8:5"`. After answering, the app shows "📖 Regra 8:5", or just "📖 Regra 8" when there's no `referencia`. It also appears in the PDF.
    - `regra` is a number from 1 to 18, or `"SAR"` for the Substitution Area Regulations (Zona de Substituições). Number SAR questions `SAR1)`, `SAR2)`…
    - Questions for rules 1–18 and SAR appear in "Regras" mode automatically. A brand-new category still needs a button added in `script.js` (until TODO #11).
 

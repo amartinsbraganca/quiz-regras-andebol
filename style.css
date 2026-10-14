@@ -42,6 +42,9 @@ body {
 .btn-start:hover { background: #1d4ed8; }
 .btn-start:disabled { opacity: 0.6; cursor: wait; }
 
+/* Referência ao regulamento, mostrada depois de responder */
+.referencia { margin-top: 0.25rem; font-size: 0.9rem; opacity: 0.75; }
+
 /* =========================
    Mode Selection
 ========================= */

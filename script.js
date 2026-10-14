@@ -93,6 +93,12 @@ document.addEventListener('DOMContentLoaded', function () {
     return a;
   }
 
+  // Referência ao regulamento: "Regra 8:5" se a pergunta tiver "referencia", senão só "Regra 8"
+  function textoReferencia(p){
+    const prefixo = p.regra==='SAR' ? 'SAR' : 'Regra';
+    return p.referencia ? `${prefixo} ${p.referencia}` : (p.regra==='SAR' ? 'SAR - Zona de Substituições' : `Regra ${p.regra}`);
+  }
+
   // Compara cópias ordenadas, para não alterar o "correta" da pergunta nem a seleção
   function arraysIguais(a,b){
     if(a.length!==b.length) return false;
@@ -188,6 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </form>
       </div>
       <div id="feedback" class="mt-2"></div>
+      <div id="referencia" class="referencia hidden"></div>
     `;
     progressText.textContent=`Progresso: ${indiceAtual+1}/${perguntas.length}`;
     progressBar.style.width=`${((indiceAtual+1)/perguntas.length)*100}%`;
@@ -210,6 +217,9 @@ document.addEventListener('DOMContentLoaded', function () {
       const corretaResposta=arraysIguais(corretaArr,selecionados);
       if(corretaResposta){ acertos++; feedback.textContent="Correto!"; feedback.style.color="green"; correctSound?.play(); }
       else{ feedback.textContent="Incorreto!"; feedback.style.color="red"; wrongSound?.play(); }
+      const referencia=document.getElementById('referencia');
+      referencia.textContent=`📖 ${textoReferencia(perguntaAtual)}`;
+      referencia.classList.remove('hidden');
 
       inputs.forEach(input=>{
         const label=input.parentElement; const idx=Number(input.value);
@@ -272,10 +282,10 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       // y é a linha de base do texto; o bloco começa uma linha acima da primeira
-      // linha e termina blocoPadding abaixo da linha "Correto/Incorreto".
+      // linha e termina blocoPadding abaixo da linha da referência (a seguir a "Correto/Incorreto").
       let linhasTotal = perguntaLinhas.length;
       opLinhasArray.forEach(opItem=>linhasTotal+=opItem.linhas.length);
-      const blocoAltura = linhasTotal*lineHeight + 4 + lineHeight + blocoPadding;
+      const blocoAltura = linhasTotal*lineHeight + 4 + 2*lineHeight + blocoPadding;
 
       let topo = y - lineHeight;
       if(topo+blocoAltura>297-margin){doc.addPage();topo=margin;y=margin+lineHeight;}
@@ -299,6 +309,9 @@ document.addEventListener('DOMContentLoaded', function () {
       const userResp = resultados[i]!==undefined?resultados[i]:false;
       doc.setFont(undefined,'bold'); doc.setTextColor(userResp?"green":"red");
       doc.text(userResp?"Correto":"Incorreto", margin+blocoPadding, y);
+      y+=lineHeight;
+      doc.setFont(undefined,'normal'); doc.setTextColor(90);
+      doc.text(textoReferencia(p), margin+blocoPadding, y);
       y = topo + blocoAltura + espacoEntreBlocos + lineHeight;
     });
 
