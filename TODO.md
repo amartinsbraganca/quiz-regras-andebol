@@ -32,7 +32,7 @@ Suggested order: **1–6**, then **8 + 10**, then **14 + 15**.
 ## 3. Learning features
 
 - [x] 14. Show the rule reference after answering (and in the PDF): "Regra 8" from `regra`, or "Regra 8:5" when the optional `referencia` field is filled in.
-- [ ] 15. End-of-quiz review of wrong answers, with retry.
+- [x] 15. End-of-quiz review of wrong answers, with retry.
 - [ ] 16. Save stats in `localStorage` (accuracy per rule, most-missed questions).
 - [ ] 17. "Practise weak spots" mode.
 - [ ] 18. Select several rules at once.
@@ -45,7 +45,7 @@ Suggested order: **1–6**, then **8 + 10**, then **14 + 15**.
 - [ ] 22. Indicate multi-answer questions (all use checkboxes), or state the exam rule on the start screen.
 - [ ] 23. Remember dark mode; default to the system preference.
 - [ ] 24. Remove the dead Tailwind `dark:` classes (dark mode is off in the Tailwind 2 CDN; the real one is `.dark-mode` in `style.css`).
-- [ ] 25. Better end screen: score, %, time, "Rever erradas" / "Repetir" / "Início".
+- [x] 25. Better end screen: score, %, time, "Rever erradas" / "Repetir" / "Início".
 - [ ] 26. Sound on/off toggle.
 - [ ] 27. Only confirm leaving when a quiz is in progress; fix typo "Decerteza" → "De certeza".
 - [ ] 28. Replace `alert()` with the app's modal.

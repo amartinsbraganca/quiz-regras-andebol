@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const quizContainer = document.getElementById('quizContainer');
   const nextBtn = document.getElementById('nextBtn');
   const toggleDarkMode = document.getElementById('toggleDarkMode');
-  const exportBtn = document.getElementById('exportBtn');
+  const scoreContainer = document.getElementById('scoreContainer');
   const progressText = document.getElementById('progress');
   const progressBar = document.getElementById('progressBar');
   const scoreEl = document.getElementById('score');
@@ -148,14 +148,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   backBtn?.addEventListener('click', ()=> backConfirmModal.classList.remove('hidden'));
   backNoBtn?.addEventListener('click', ()=> backConfirmModal.classList.add('hidden'));
-  backYesBtn?.addEventListener('click', ()=>{
+  function voltarInicio(){
     appContainer.style.display='none';
     startPage.style.display='flex';
     modeSelection.style.display='none';
     indiceAtual=0; acertos=0; resultados=[]; respostasSelecionadas=[]; atualizarScore();
-    exportBtn.classList.add('hidden');
     backConfirmModal.classList.add('hidden');
-  });
+  }
+  backYesBtn?.addEventListener('click', voltarInicio);
 
   toggleDarkMode?.addEventListener('click', ()=> document.body.classList.toggle('dark-mode'));
 
@@ -164,9 +164,15 @@ document.addEventListener('DOMContentLoaded', function () {
   // --------------------
   // Funções Quiz
   // --------------------
-  function iniciarQuiz(){
+  let inicioQuiz = 0;
+  let quizCompleto = []; // perguntas do quiz original, para "Repetir quiz" depois de "Repetir as erradas"
+
+  function iniciarQuiz(soErradas=false){
+    if(!soErradas) quizCompleto=perguntas;
     indiceAtual=0; acertos=0; resultados=[]; respostasSelecionadas=[];
-    exportBtn.classList.add('hidden');
+    inicioQuiz=Date.now();
+    nextBtn.classList.remove('hidden'); scoreContainer.classList.remove('hidden');
+    window.scrollTo(0,0); quizContainer.scrollTop=0;
     modeSelection.style.display='none'; appContainer.style.display='block';
     ocultarLogos(); renderPergunta();
   }
@@ -233,11 +239,67 @@ document.addEventListener('DOMContentLoaded', function () {
     }else{
       podeAvancar=false;
       if(indiceAtual<perguntas.length-1){ indiceAtual++; renderPergunta(); }
-      else{ quizContainer.innerHTML=`<h2 class="text-xl font-bold mb-4">Quiz terminado!</h2><p>Acertos: ${acertos} em ${perguntas.length} perguntas.</p>`; nextBtn.disabled=true; exportBtn.classList.remove('hidden'); }
+      else{ mostrarFimQuiz(); }
     }
   }
+  function escaparHtml(t){
+    return String(t).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function formatarTempo(ms){
+    const s=Math.round(ms/1000);
+    return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
+  }
+
+  // Ecrã final: resultado, botões e revisão das perguntas erradas
+  function mostrarFimQuiz(){
+    const total=perguntas.length;
+    const percent=total>0?Math.round((acertos/total)*100):0;
+    const indicesErrados=perguntas.map((_,i)=>i).filter(i=>!resultados[i]);
+    const erradas=indicesErrados.map(i=>perguntas[i]);
+
+    // Em cada pergunta errada mostra as opções certas (✓) e as escolhidas pelo utilizador
+    const cartoes=indicesErrados.map(i=>{
+      const p=perguntas[i];
+      const correta=[].concat(p.correta);
+      const selecionados=respostasSelecionadas[i]||[];
+      const linhas=p.opcoes.map((op,idx)=>{
+        const certa=correta.includes(idx), minha=selecionados.includes(idx);
+        if(!certa && !minha) return '';
+        return `<li class="${certa?'opcao-certa':'opcao-errada'}">${certa?'✓':'✗'} ${escaparHtml(op)}${minha?' <em>(a tua resposta)</em>':''}</li>`;
+      }).join('');
+      return `
+        <div class="revisao-card">
+          <p class="revisao-pergunta">${escaparHtml(p.pergunta)}</p>
+          <ul class="revisao-opcoes">${linhas}</ul>
+          <p class="referencia">📖 ${escaparHtml(textoReferencia(p))}</p>
+        </div>`;
+    }).join('');
+
+    quizContainer.innerHTML=`
+      <div class="fim-quiz">
+        <h2 class="text-xl font-bold mb-2">Quiz terminado!</h2>
+        <p class="fim-resumo">Acertos: <strong>${acertos} em ${total}</strong> (${percent}%) · Tempo: ${formatarTempo(Date.now()-inicioQuiz)}</p>
+        ${erradas.length===0?'<p class="fim-perfeito">Acertaste todas! 🎉</p>':''}
+        <div class="fim-acoes">
+          ${erradas.length?`<button id="repetirErradasBtn" class="mode-btn red-btn-alt">Repetir as erradas (${erradas.length})</button>`:''}
+          <button id="repetirQuizBtn" class="mode-btn blue-btn">Repetir quiz</button>
+          <button id="exportarBtn" class="mode-btn purple-btn">Exportar resultados</button>
+          <button id="inicioBtn" class="mode-btn green-btn">Início</button>
+        </div>
+        ${erradas.length?`<h3 class="revisao-titulo">Rever erradas</h3>${cartoes}`:''}
+      </div>`;
+    nextBtn.classList.add('hidden');
+    scoreContainer.classList.add('hidden');
+
+    document.getElementById('repetirErradasBtn')?.addEventListener('click', ()=>{ perguntas=erradas; iniciarQuiz(true); });
+    document.getElementById('repetirQuizBtn').addEventListener('click', ()=>{ perguntas=quizCompleto; iniciarQuiz(); });
+    document.getElementById('exportarBtn').addEventListener('click', exportarResultados);
+    document.getElementById('inicioBtn').addEventListener('click', voltarInicio);
+  }
+
   // --- Exportar PDF ---
-  exportBtn?.addEventListener('click', () => {
+  function exportarResultados() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF({ unit: "mm", format: "a4" });
     const margin = 15;
@@ -318,5 +380,5 @@ document.addEventListener('DOMContentLoaded', function () {
     const hoje = new Date();
     const data = `${hoje.getFullYear()}-${String(hoje.getMonth()+1).padStart(2,'0')}-${String(hoje.getDate()).padStart(2,'0')}`;
     doc.save(`resultados_quiz_${data}.pdf`);
-  });
+  }
 });

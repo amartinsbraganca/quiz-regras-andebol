@@ -46,6 +46,33 @@ body {
 .referencia { margin-top: 0.25rem; font-size: 0.9rem; opacity: 0.75; }
 
 /* =========================
+   Fim do quiz e revisão das erradas
+========================= */
+.fim-quiz { text-align: center; }
+.fim-resumo { margin-bottom: 0.75rem; }
+.fim-perfeito { font-size: 1.1rem; font-weight: 600; color: #16a34a; margin-bottom: 0.75rem; }
+.fim-acoes { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin: 1rem 0 1.5rem; }
+.fim-acoes .mode-btn { width: auto; min-width: 160px; }
+.revisao-titulo { font-size: 1.1rem; font-weight: 700; text-align: left; margin-bottom: 0.5rem; }
+.revisao-card {
+  text-align: left;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-left: 4px solid #ef4444;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+}
+.revisao-pergunta { font-weight: 600; margin-bottom: 0.5rem; }
+.revisao-opcoes { list-style: none; padding: 0; margin: 0 0 0.25rem; }
+.revisao-opcoes li { padding: 0.15rem 0; }
+.opcao-certa { color: #15803d; }
+.opcao-errada { color: #dc2626; }
+.dark-mode .revisao-card { background: #383842; border-color: #4b4b57; border-left-color: #ef4444; }
+.dark-mode .opcao-certa { color: #4ade80; }
+.dark-mode .opcao-errada { color: #f87171; }
+
+/* =========================
    Mode Selection
 ========================= */
 .mode-selection-container {
